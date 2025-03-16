@@ -1,5 +1,6 @@
 import autores from "./routers/autores.router.js"
 import categorias from "./routers/categorias.router.js"
+import libros from "./routers/libros.router.js"
 import express from "express"
 import engine from "express-handlebars"
 import __dirname from './utils.js'
@@ -21,6 +22,8 @@ app.use(express.urlencoded({ extended: true }));
 // Configuración de rutas
 app.use('/api/autores', autores);
 app.use('/api/categorias', categorias);
+app.use('/api/libros', libros);
+
 
 // Configuración del motor de vistas
 app.engine('handlebars', engine.engine({
