@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Autores</title>
+</head>
+
+<body>
+    <h1>Lista de Autores</h1>
+
+    <!-- Contenedor principal -->
+    <div class="main-container">
+        <!-- Sección de Buscar ID -->
+        <section class="search-section">
+            <div class="search-container">
+                <h2>Buscar por Nombre</h2>
+                <form id="IDC-1">
+                    <label for="IDC-">Nombre del Autor:</label>
+                    <input type="text" id="IDA" name="IDA" placeholder="ID del autor">
+                    <button type="button" class="button">Buscar</button>
+                </form>
+            </div>
+            <br>
+
+        </section>
+        <!-- Sección de Libros -->
+        <section class="libros-section">
+            <div class="libros-container">
+                {{#each autores}}
+                <div class="libros-item">
+                    <label for="text">Autor:</label>
+                    <p><strong>_id:</strong> {{_id}}</p>
+                    <p><strong>nombre:</strong> {{nombre}}</p>
+                    <p><strong>edad:</strong> {{edad}}</p>
+
+                    <label for="text">Lista de libros:</label>
+                    {{#each autores.libros}}
+                    <div class="product-item">
+                        <p><strong>_id:</strong> {{_id}}</p>
+                        <p><strong>cantidad:</strong> {{cantidad}}</p>
+                        <button class="btn-delete" data-id-libro={{_id}} data-id-autor={{../_id}}>Eliminar
+                            libro</button>
+                    </div>
+                    {{/each}}
+                    <br>
+                    <button class="btn-delete" data-id-autor={{_id}}>Eliminar Autor</button>
+
+                </div>
+                {{/each}}
+            </div>
+        </section>
+
+        <script src="js/autorindex.js"></script>
+</body>
+
+</html>

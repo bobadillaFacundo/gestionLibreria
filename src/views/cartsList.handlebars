@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito</title>
+    <button class="btn-volver">Volver</button>
+</head>
+
+<body>
+    <h1>Listado de Carritos</h1>
+
+    <h2>Carrito ID: {{carts._id}}</h2>
+
+    {{#if carts.products.length}}
+    <h3>Productos en el Carrito:</h3>
+    <ul>
+        {{#each carts.products}}
+        <li>
+            Producto ID: {{this._id._id}} <br>
+            Title: {{this._id.title}} <br>
+            Description: {{this._id.description}} <br>
+            Code: {{this._id.code}} <br>
+            Stock: {{this._id.stock}} <br>
+            Status: {{this._id.status}} <br>
+            Category: {{this._id.category}} <br>
+            Price: {{this._id.price}} <br>
+        </li>
+        <li>
+            Cantidad: {{this.cantidad}} <br>
+        </li>
+        <button class="btn-delete-products-carts1" data-id231={{../carts._id}} data-products1={{this._id._id}}>Eliminar
+            Producto</button>
+        {{/each}}
+    </ul>
+    {{else}}
+    <p>No hay productos en el carrito.</p>
+    {{/if}}
+    <button class="btn-delete-carts" data-id32={{carts._id}}>Eliminar Carrito</button>
+
+
+</body>
+
+</html>
+
+
+<script src="js/cartsList.js"></script>

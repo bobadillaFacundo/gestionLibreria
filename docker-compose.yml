@@ -1,0 +1,30 @@
+services:
+  mongodb:
+    image: mongo:latest
+    restart: always
+    ports:
+      - "9090:27017"
+    volumes:
+      - mongo_data:/data/db
+  
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongodb
+    environment:
+      MONGO_URL: 'mongodb://mongodb:27017/'
+      MONDO_DB: 'biblioteca'
+      MONGO_COLLECTION_CARRITOS : 'carritos'
+      MONGO_COLLECTION_AUTORES : 'autores'
+      MONGO_COLLECTION_CATEGORIAS : 'catgeorias'
+      MONGO_COLLECTION_LIBROS : 'libros'
+      MONGO_DB_URL: 'mongodb://mongodb:27017/biblioteca'
+
+
+volumes:
+  mongo_data: {}
+      

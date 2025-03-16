@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Categorias</title>
+</head>
+
+<body>
+    <h1>Lista de Categorias</h1>
+
+    <!-- Contenedor principal -->
+        <section class="libros-section">
+            <div class="libros-container">
+                {{#each categorias}}
+                <div class="libros-item">
+                    <label for="text">Categoria:</label>
+                    <p><strong>_id:</strong> {{_id}}</p>
+                    <p><strong>nombre:</strong> {{nombre}}</p>
+                    <br>
+                    <button class="btn-delete" data-id-categoria={{_id}}>Eliminar Categoria</button>
+
+                </div>
+                {{/each}}
+            </div>
+        </section>
+
+        <script src="js/categoriaindex.js"></script>
+</body>
+
+</html>

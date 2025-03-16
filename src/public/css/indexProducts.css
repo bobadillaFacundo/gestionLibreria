@@ -1,0 +1,223 @@
+/* Variables de colores */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #e74c3c;
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --white-color: #fff;
+    --border-color: #ddd;
+    --hover-color: #0056b3;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos Generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+}
+
+h1 {
+    text-align: center;
+    color: var(--text-color);
+}
+
+/* Sección de Productos */
+.products-section,
+.filters-section,
+.forms-section {
+    margin: 20px;
+    background: var(--white-color);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.product-item {
+    background: var(--white-color);
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.product-item p {
+    margin: 5px 0;
+}
+
+/* Botones Generales */
+button {
+    padding: 6px 12px; /* Ajustar padding para hacer los botones más angostos */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--white-color);
+    font-size: 14px; /* Ajustar tamaño de fuente */
+    margin: 5px;
+    background-color: var(--primary-color);
+}
+
+button:hover {
+    background-color: var(--hover-color);
+}
+
+.btn-delete {
+    background-color: var(--secondary-color);
+}
+
+.btn-cart {
+    background-color: var(--primary-color);
+}
+
+/* Botones con clase .boton2 */
+.boton2 {
+    padding: 2px 4px; /* Ajustar padding para hacer los botones más cortos */
+    font-size: 12px; /* Ajustar tamaño de fuente */
+    background-color: var(--primary-color); /* Color de fondo por defecto */
+    color: var(--white-color);
+}
+
+.boton2:hover {
+    background-color: var(--hover-color);
+}
+
+/* Sección de Filtros */
+.filters-section form {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en múltiples líneas si es necesario */
+    gap: 10px; /* Espacio entre los elementos */
+}
+
+.filters-section input,
+.filters-section select {
+    width: 150px; /* Ajustar el ancho para hacer los inputs más pequeños */
+    box-sizing: border-box; /* Incluye padding y border en el width total */
+    padding: 6px; /* Ajustar padding para hacer los inputs más compactos */
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 12px; /* Ajustar tamaño de fuente para que el texto se ajuste mejor */
+}
+
+input:focus,
+select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* Sección de Formularios */
+.forms-section .form {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en múltiples líneas si es necesario */
+    gap: 10px; /* Espacio entre los elementos */
+}
+
+.forms-section .form input,
+.forms-section .form select {
+    width: 150px; /* Ajustar el ancho para hacer los inputs más pequeños */
+    box-sizing: border-box; /* Incluye padding y border en el width total */
+    padding: 6px; /* Ajustar padding para hacer los inputs más compactos */
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 12px; /* Ajustar tamaño de fuente para que el texto se ajuste mejor */
+}
+
+.toggle-form {
+    cursor: pointer;
+    color: var(--primary-color);
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Estilos de Header */
+header {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Botón del Carrito */
+.cart-button {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 5px;
+    padding: 4px 8px; /* Ajustar padding para hacer el botón del carrito más compacto */
+    font-size: 14px; /* Ajustar tamaño de fuente */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.cart-button i {
+    margin-right: 8px;
+}
+
+.cart-button:hover {
+    background-color: var(--hover-color);
+}
+
+  /* Estilo para el fondo de la ventana emergente */
+  .overlay {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo para el cuadro de la ventana emergente */
+.popup {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el botón de cierre */
+.close-btn {
+    margin-top: 10px;
+    background: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilo para el botón que abre la ventana emergente */
+.open-btn {
+    background: blue;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilo para la lista dentro del popup */
+.popup ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo para los elementos de la lista */
+.popup li {
+    margin-bottom: 10px;
+}

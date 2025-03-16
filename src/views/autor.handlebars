@@ -1,0 +1,34 @@
+<header>
+    <button class="btn-volver-autores">Volver</button>
+</header>
+<body>
+      </section>
+        <!-- Sección de Libros -->
+        <section class="libros-section">
+            <div class="libros-container">
+                {{#each autor}}
+                <div class="libros-item">
+                    <label for="text">Autor:</label>
+                    <p><strong>_id:</strong> {{_id}}</p>
+                    <p><strong>nombre:</strong> {{nombre}}</p>
+                    <p><strong>edad:</strong> {{edad}}</p>
+
+                    <label for="text">Lista de libros:</label>
+                    {{#each autor.libros}}
+                    <div class="product-item">
+                        <p><strong>_id:</strong> {{_id}}</p>
+                        <button class="btn-delete" data-id-libro={{_id}} data-id-autor={{../_id}}>Eliminar
+                            libro</button>
+                    </div>
+                    {{/each}}
+                    <br>
+                    <button class="btn-delete" data-id-autor={{_id}}>Eliminar Autor</button>
+
+                </div>
+                {{/each}}
+            </div>
+        </section>
+
+</body>
+
+<script src="/js/autorindex.js"></script>
