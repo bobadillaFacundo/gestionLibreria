@@ -5,15 +5,14 @@ document.querySelectorAll('.btn-volver-libro').forEach(button => {
     })
 })
 
-document.querySelector('.btn-buscar').addEventListener('click', async () => {
-    const idInput = document.getElementById('IDL').value.trim()
+document.querySelector('.buscarLibro').addEventListener('click', async () => {
+    const idInput = document.getElementById('IDL').value;
     if (idInput) {     
-        window.location.hrsef = `http://localhost:8000/api/libros/${idInput}`;
+        window.location.href = `http://localhost:8000/api/libros/${idInput}`;
     } else {
         alert('Error, ingrese el nombre del libro');
     }
 })
-
 
 document.querySelectorAll('.btn-delete').forEach(button => {
     button.addEventListener('click', async () => {
