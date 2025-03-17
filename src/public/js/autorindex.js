@@ -18,17 +18,18 @@ document.querySelectorAll('.button').forEach(button => {
 })
 
 // Asignar eventos a loss botones de eliminar
-document.querySelectorAll('.btn-delete').forEach(button => {
+document.querySelectorAll('.btn-delete-libro').forEach(button => {
     button.addEventListener('click', async () => {
-        const id = button.getAttribute('data-id-autor')
+        const id = button.getAttribute('data-id-libro')
         try {
-            const response = await fetch(`http://localhost:8000/api/autores/${id}`, {
+            const response = await fetch(`http://localhost:8000/api/libros/${id}`, {
                 method: 'DELETE'
             })
-            const result = await response.json()
-            alert(result.message)
+            await response.json()
             if (response.ok) {
-                window.location.href = `http://localhost:8000/api/autores/principal`
+                alert("Libro eliminado con exito")
+                location.reload();
+
             }
         } catch (error) {
             console.error('Error:', error)
@@ -37,7 +38,28 @@ document.querySelectorAll('.btn-delete').forEach(button => {
     }
     )
 })
+// Asignar eventos a loss botones de eliminar
+document.querySelectorAll('.btn-delete-autor').forEach(button => {
+    button.addEventListener('click', async () => {
+        const id = button.getAttribute('data-id-autor')
+        try {
+            const response = await fetch(`http://localhost:8000/api/autores/${id}`, {
+                method: 'DELETE'
+            })
+           await response.json()
 
+            if (response.ok) {
+                alert("Autor eliminado con exito")
+                location.reload();
+
+            }
+        } catch (error) {
+            console.error('Error:', error)
+            alert('Error al eliminar el autor')
+        }
+    }
+    )
+})
 document.querySelectorAll('.btn-volver-libro').forEach(button => {
     button.addEventListener('click', () => {
         window.location.href = `http://localhost:8000/api/libros/principal`
@@ -61,6 +83,8 @@ document.querySelectorAll('.buttonCrearAutor').forEach(button => {
             })
             document.getElementById('formC').reset()
             alert('Autor creado con exito', result)
+            location.reload();
+
         } catch (error) {
             console.error('Error:', error)
             alert('Error al crear el autor')

@@ -9,10 +9,10 @@
         <form id="formC" class="form" method="POST" action="/api/libros/">
             <input type="text" id="titulo" class="input" placeholder="Titulo" name="titulo">
             <input type="text" id="descripcion" class="input" placeholder="descripcion" name="descripcion">
-            <select id="autor"  name="autor" >
+            <select id="autor" name="autor">
                 {{#each autores}}
                 <option value="{{nombre}}">{{nombre}}</option>
-                {{/each}}
+                {{/each}}               
             </select>
             <input type="text" id="precio" class="input" placeholder="precio" name="precio">
             <input type="text" id="cantidad" class="input" placeholder="cantidad" name="cantidad">
@@ -24,7 +24,6 @@
             <button type="submit" class="buttonCrearLibro">Crear</button>
         </form>
     </section>
-
 </body>
 
 <script src="/js/libroindex.js"></script>

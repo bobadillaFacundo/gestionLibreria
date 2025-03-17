@@ -1,15 +1,16 @@
 
-document.querySelectorAll('.btn-delete').forEach(button => {
+document.querySelectorAll('.btn-delete-categoria').forEach(button => {
     button.addEventListener('click', async () => {
         const id = button.getAttribute('data-id-categoria')
         try {
             const response = await fetch(`http://localhost:8000/api/categorias/${id}`, {
                 method: 'DELETE'
             })
-            const result = await response.json()
-            alert(result.message)
+            await response.json()
             if (response.ok) {
-                window.location.href = `http://localhost:8000/api/categorias/principal`
+                alert("Categoria eliminada con exito")
+                location.reload();
+
             }
         } catch (error) {
             console.error('Error:', error)
@@ -42,6 +43,8 @@ document.querySelectorAll('.buttonCrearCategoria').forEach(button => {
             })
             document.getElementById('formC').reset()
             alert('Categoria creado con exito', result)
+            location.reload();
+
         } catch (error) {
             console.error('Error:', error)
             alert('Error al crear la categoria')

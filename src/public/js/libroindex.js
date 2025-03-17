@@ -7,7 +7,7 @@ document.querySelectorAll('.btn-volver-libro').forEach(button => {
 
 document.querySelector('.buscarLibro').addEventListener('click', async () => {
     const idInput = document.getElementById('IDL').value;
-    if (idInput) {     
+    if (idInput) {
         window.location.href = `http://localhost:8000/api/libros/${idInput}`;
     } else {
         alert('Error, ingrese el nombre del libro');
@@ -94,11 +94,13 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             const result = await response.json()
-            
+
             if (response.ok) {
                 // Si la operación fue exitosa, mostrar un alert con el mensaje
                 alert(result.message) // Mostrar el mensaje de éxito
                 form.reset() // Limpiar el formulario si es necesario
+                location.reload();
+
             } else {
                 // Si hay un error, mostrar el mensaje de error
                 alert(result.message)
@@ -109,21 +111,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
 })
-
-document.addEventListener('DOMContentLoaded', () => {
-    const selectElement = document.getElementById('categorias');  // Obtener el select por ID
-
-    // Verificar si el select tiene el atributo 'multiple'
-    if (selectElement.hasAttribute('multiple')) {
-        // Escuchar los clics en las opciones dentro del select
-        selectElement.addEventListener('click', function(event) {
-            // Verificar si el clic fue en una opción dentro del select
-            if (event.target.tagName === 'OPTION') {
-                const option = event.target;
-
-                // Alternar el estado de selección de la opción (seleccionada/deseleccionada)
-                option.selected = !option.selected;
-            }
-        });
-    }
-});

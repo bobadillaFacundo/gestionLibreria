@@ -41,12 +41,12 @@
                     {{#each libros}}
                     <div class="product-item">
                         <p><strong>Titulo:</strong> {{titulo}}</p>
-                        <button class="btn-delete" data-id-libro={{_id}} data-id-autor={{../_id}}>Eliminar
+                        <button class="btn-delete-libro" data-id-libro={{_id}} data-id-autor={{../_id}}>Eliminar
                             libro</button>
                     </div>
                     {{/each}}
                     <br>
-                    <button class="btn-delete" data-id-autor={{_id}}>Eliminar Autor</button>
+                    <button class="btn-delete-autor" data-id-autor={{_id}}>Eliminar Autor</button>
 
                 </div>
                 {{/each}}
