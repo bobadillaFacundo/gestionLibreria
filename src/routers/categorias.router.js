@@ -18,6 +18,12 @@ router.get('/principal', async (req, res) => {
     })
 })
 
+router.get("/crud", async (req, res) => {
+    return res.render('createCatgeoria', {
+        style: 'index.css',
+    })
+})
+
 router.get('/', async (req, res) => {
     await obtenerTodosLosDocumentos(categoriasModel).then(result => {
         res.json(result)

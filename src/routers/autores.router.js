@@ -20,6 +20,12 @@ router.get('/principal', async (req, res) => {
       } 
 }) 
 
+router.get("/crud", async (req, res) => {
+    return res.render('createAutor', {
+        style: 'index.css',
+    })
+})
+
 
 router.get('/', async (req, res) => {
     await obtenerTodosLosDocumentos(autoresModel).then(result => {
@@ -32,9 +38,9 @@ router.get('/', async (req, res) => {
 
 router.get("/:cid", async (req, res) => {
     try {
-        const cid = String(req.params.cid); // Asegurar que sea una cadena
+        const cid = String(req.params.cid); 
         const result = await autoresModel
-        .find({ nombre: { $regex: `${cid}`, $options: 'i' } }) // Coincide con nombres que empiezan con 'cid'
+        .find({ nombre: { $regex: `${cid}`, $options: 'i' } }) 
         .populate('libros');
                 console.log(result)
         
@@ -85,5 +91,23 @@ router.delete("/:cid", async (req, res) => {
     })
 })
 
+router.post("/", (async (req, res) => {
+    const autor = req.body
+    if (!autor.nombre || !autor.edad ) {
+        return ERROR(res, `Campos Vacios`)
+    }
+    const nuevoAutor = new autoresModel({
+        nombre: autor.nombre,
+        edad: autor.edad,
+        libros: []
+    })
+    try {
+        const guardarAutor = await nuevoAutor.save()
+        res.json( guardarAutor)
+    } catch (error) {
+        console.error(`Error al insertar documento, ${error}`)
+        ERROR(res, `Error del servidor: ${error}`)
+    }
+}))
 
 export default router

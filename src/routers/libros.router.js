@@ -2,6 +2,7 @@ import express from "express"
 import { obtenerDocumento, deleteDocumento, ERROR } from "../utils.js"
 import librosModel from '../models/libros.js'
 import autoresModel from '../models/autores.js'
+import categoriasModel from '../models/categorias.js'
 import __dirname from "../utils.js"
 import mongoose from 'mongoose'
 
@@ -13,7 +14,7 @@ router.get('/principal', async (req, res) => {
     try {
         const result = await librosModel.find()
             .populate({ path: 'autor' })   
-            .populate({ path: 'categorias' });
+            .populate({ path: 'categorias' })
 
         res.render('libros', {
             style: 'index.css',
@@ -21,9 +22,10 @@ router.get('/principal', async (req, res) => {
         });
     } catch (error) {
         console.error("Error al obtener los libros:", error);
-        res.status(500).send("Error del servidor");
+        res.status(500).send("Error del servidor")
     }
 })
+
 
 router.get('/', async (req, res) => {
     try {
@@ -39,6 +41,15 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.get("/crud", async (req, res) => {
+    const autor = await autoresModel.find()
+    const categorias = await categoriasModel.find()
+    return res.render('createLibro', {
+        style: 'index.css',
+        autores: autor,
+        categorias: categorias
+    })
+})
 
 router.get("/:cid", async (req, res) => {
     try {
@@ -64,29 +75,35 @@ router.get("/:cid", async (req, res) => {
 
 router.post("/", (async (req, res) => {
     const libro = req.body
+    
     if (!libro.titulo || !libro.descripcion || !libro.autor || !libro.precio || !libro.cantidad || !libro.categorias) {
         return ERROR(res, `Campos Vacios`)
     }
+    const categoriasArray = Array.isArray(libro.categorias) ? libro.categorias : [libro.categorias];
+
+    const autor1 = await autoresModel.findOne({ nombre: new RegExp(libro.autor, 'i') })
+    const categorias = await categoriasModel.find({ nombre: { $in: categoriasArray} })
+
     
     const nuevolibro = new librosModel({
         titulo: libro.titulo,
         descripcion: libro.descripcion,
-        autor: new mongoose.Types.ObjectId(libro.autor) ,
+        autor: autor1._id ,
         precio: libro.precio,
         estado: libro.estado,
         cantidad: libro.cantidad,
-        categorias:  libro.categorias.map(id => new mongoose.Types.ObjectId(id)) 
-    })
-    
-    const autor = await obtenerDocumento(libro.autor, autoresModel)
-
-    autor.libros.push(nuevolibro)
-
-    autor.save()
-
-    try {
+        categorias:  categorias
+    }) 
+    try {   
+        // Guardar el libro en la base de datos
         const guardarlibro = await nuevolibro.save()
-        res.json( guardarlibro )
+
+        // Ahora actualizamos el autor, agregando el nuevo libro a su lista de libros
+        await autoresModel.findByIdAndUpdate(
+            autor1._id, 
+            { $push: { libros: guardarlibro._id } }
+        )
+        res.status(201).json({ message: 'Libro creado con éxito' })
     } catch (error) {
         console.error(`Error al insertar documento, ${error}`)
         ERROR(res, `Error del servidor: ${error}`)
@@ -103,6 +120,33 @@ router.delete("/:cid", async (req, res) => {
         ERROR(res, `Error del servidor: ${error}`)
     })
 })
+
+router.post("/", (async (req, res) => {
+    const libro = req.body
+    if (!libro.titulo || !libro.descripcion || !libro.autor || !libro.precio || !libro.cantidad || !libro.categorias) {
+        return ERROR(res, `Campos Vacios`)
+    }
+
+    const nuevolibro = new librosModel({
+        titulo: libro.titulo,
+        descripcion: libro.descripcion, 
+        autor: new mongoose.Types.ObjectId(libro.autor) ,
+        precio: libro.precio,   
+        estado: libro.estado,
+        cantidad: libro.cantidad,   
+        categorias:  libro.categorias.map(id => new mongoose.Types.ObjectId(id)) 
+    })
+    await nuevolibro.populate({ path: 'autores' }, { path: 'libros' })
+    try {
+        const guardaerAutor = await nuevolibro.save()
+        res.json( guardaerAutor )
+    } catch (error) {
+        console.error(`Error al insertar documento, ${error}`)
+        ERROR(res, `Error del servidor: ${error}`)
+    }
+}))
+
+
 
 
 export default router
