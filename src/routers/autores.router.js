@@ -8,15 +8,18 @@ router.use(express.static(__dirname + "/public"))
 
 
 router.get('/principal', async (req, res) => {
-    await obtenerTodosLosDocumentos(autoresModel).then(result => {
+    try {
+        const autores = await autoresModel.find().populate('libros')
+        
         res.render('autores', {
             style: 'index.css',
-            autores: result
+            autores: autores
         })
-    }).catch(error => {
-        ERROR(res, `Error del servidor: ${error}`)
-    })
-})
+      } catch (error) {
+       return {message:'Error al conectar o interactuar con la base de datos en obtenerTodoslosDocumentos', error}
+      } 
+}) 
+
 
 router.get('/', async (req, res) => {
     await obtenerTodosLosDocumentos(autoresModel).then(result => {
@@ -29,24 +32,27 @@ router.get('/', async (req, res) => {
 
 router.get("/:cid", async (req, res) => {
     try {
-        const result = await obtenerDocumento(req.params.cid, autoresModel)
-
+        const cid = String(req.params.cid); // Asegurar que sea una cadena
+        const result = await autoresModel
+        .find({ nombre: { $regex: `${cid}`, $options: 'i' } }) // Coincide con nombres que empiezan con 'cid'
+        .populate('libros');
+                console.log(result)
+        
         if (!result) {
-            return ERROR(res, `Error del servidor: ID no Existe`)
+            return res.status(404).json({ error: "Error del servidor: ID no Existe" })
         }
 
-        await result.populate('libros')
-        result.save
         console.log(result);
-        
+
         return res.render('autor', {
             style: 'index.css',
             autor: result
         })
 
     } catch (error) {
-        ERROR(res, `Error del servidor: ${error}`)
+        return res.status(500).json({ error: "Error del servidor: ${error.message} "})
     }
+
 })
 
 router.post("/", (async (req, res) => {

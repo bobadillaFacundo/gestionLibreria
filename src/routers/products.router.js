@@ -246,7 +246,9 @@ router.put("/", async (req, res) => {
         }
 
 
-        const savedProduct = await productsModel.updateOne({ _id: product.id }, { $set: products })
+        const savedProduct = await productsModel.
+        updateOne({ _id: product.id }, { $set: products })
+        
         if (savedProduct.matchedCount === 0) {
             return ERROR(res, "Producto no encontrado")
         }

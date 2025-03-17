@@ -14,9 +14,9 @@
                     <p><strong>edad:</strong> {{edad}}</p>
 
                     <label for="text">Lista de libros:</label>
-                    {{#each autor.libros}}
+                    {{#each libros}}
                     <div class="product-item">
-                        <p><strong>_id:</strong> {{_id}}</p>
+                        <p><strong>Titulo:</strong> {{titulo}}</p>
                         <button class="btn-delete" data-id-libro={{_id}} data-id-autor={{../_id}}>Eliminar
                             libro</button>
                     </div>

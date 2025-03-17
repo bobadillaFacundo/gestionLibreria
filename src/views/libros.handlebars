@@ -1,56 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Libros</title>
-</head>
 
 <body>
-    <h1>Lista de Libros</h1>
-
     <!-- Contenedor principal -->
     <div class="main-container">
-        <!-- Sección de Buscar ID -->
-        <section class="search-section">
-            <div class="search-container">
-                <h2>Buscar por Nombre</h2>
-                <form id="IDC-1">
-                    <label for="IDC-">Nombre del Libro:</label>
-                    <input type="text" id="IDL" name="IDL" placeholder="ID del libro">
-                    <button type="button" class="button">Buscar</button>
-                </form>
-            </div>
-            <br>
+        <!-- Sección de Buscar -->
+        <div class="search-section">
+            <h2>Buscar por Nombre</h2>
+            <form id="IDC-1">
+                <label for="IDL">Nombre del Libro:</label>
+                <input type="text" id="IDL" name="IDL" placeholder="Nombre del libro">
+                <button type="submit" class="btn-buscar">Buscar</button>
+            </form>
+        </div>
 
-        </section>
+        <!-- Sección de Botones (Autor y Categorías) -->
+        <div class="botones-container">
+            <button class="btn-categorias">Categorías</button>
+            <button class="btn-autor">Autor</button>
+        </div>
+
         <!-- Sección de Libros -->
         <section class="libros-section">
-            <div class="libros-container">
-                {{#each libros}}
-                <div class="libros-item">
-                    <label for="text">Libro:</label>
-                    <p><strong>_id:</strong> {{_id}}</p>
-                     <p><strong>autor:</strong>{{autor.nombre}}</p>
-                    <p><strong> titulo:</strong> {{titulo}}</p>
-                    <p><strong> descripcion:</strong> {{descripcion}}</p>
-                    <p><strong>precio:</strong> {{precio}}</p>
-                    <p><strong>cantidad:</strong> {{cantidad}}</p>
-                    <label for="text">Lista de categorias:</label>
-                    {{#each categorias}}
-                    <div class="product-item">
-                        <p>{{nombre}}</p>
-                    </div>
-                    {{/each}}
-                    <br>
-                    <button class="btn-delete" data-id-libro={{_id}}>Eliminar Libro</button>
+            {{#each libros}}
+            <div class="libros-item">
+                <label for="text">Libro:</label>
+                <p><strong>_id:</strong> {{_id}}</p>
+                <p><strong>autor:</strong>{{autor.nombre}}</p>
+                <p><strong>titulo:</strong> {{titulo}}</p>
+                <p><strong>descripcion:</strong> {{descripcion}}</p>
+                <p><strong>precio:</strong> {{precio}}</p>
+                <p><strong>cantidad:</strong> {{cantidad}}</p>
+                <label for="text">Lista de categorias:</label>
+                {{#each categorias}}
+                <div class="product-item">
+                    <p>{{nombre}}</p>
                 </div>
                 {{/each}}
+                <br>
+                <button class="btn-delete" data-id-libro={{_id}}>Eliminar Libro</button>
             </div>
+            {{/each}}
         </section>
-
-        <script src="js/libroindex.js"></script>
+    </div>
 </body>
 
-</html>
+<script src="/js/libroindex.js"></script>
+

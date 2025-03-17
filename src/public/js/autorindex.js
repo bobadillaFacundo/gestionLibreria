@@ -12,13 +12,10 @@ document.querySelectorAll('.button').forEach(button => {
         if (idInput) {
             window.location.href = `http://localhost:8000/api/autores/${idInput}`
         } else {
-            alert('Error, ingrese el ID del producto')
+            alert('Error, nombre de autor')
         }
     })
 })
-
-
-
 
 // Asignar eventos a loss botones de eliminar
 document.querySelectorAll('.btn-delete').forEach(button => {
@@ -39,4 +36,10 @@ document.querySelectorAll('.btn-delete').forEach(button => {
             }
         }
     )
+})
+
+document.querySelectorAll('.btn-volver-libro').forEach(button => {
+    button.addEventListener('click', () => {
+        window.location.href = `http://localhost:8000/api/libros/principal`
+    })
 })

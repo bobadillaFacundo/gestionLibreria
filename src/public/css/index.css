@@ -1,16 +1,126 @@
-
-h1
-{
-    color: #333;
+/* General */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
-.btn-volver {
-    background-color: #007bff;
-    color: #fff;
+
+/* Contenedor principal */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    align-items: flex-start;  /* Alinea los elementos a la izquierda */
+    gap: 20px;
+}
+
+/* Sección de Buscar */
+.search-section {
+    width: 60%;  /* Sección de búsqueda ocupa el 60% del ancho */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.search-section form {
+    display: flex;
+    gap: 10px;
+}
+
+.search-section input {
+    width: 70%;  /* El input ocupa el 70% del contenedor */
+    padding: 10px;
+}
+
+.search-section button {
+    padding: 10px;
+    background-color: #008CBA;
+    color: white;
     border: none;
     border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
 }
+
+/* Sección de Botones (Autor y Categorías) */
+.botones-container {
+    width: 60%;  /* Los botones ocupan el 60% del ancho */
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;  /* Alinea los botones a la izquierda */
+    margin-top: 10px;
+}
+
+.botones-container button {
+    width: 30%;  /* Los botones ocupan el 30% del ancho */
+    padding: 10px;
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.botones-container button:hover {
+    opacity: 0.8;
+}
+
+/* Sección de Libros */
+.libros-section {
+    width: 60%;  /* Los libros ocupan el 60% del ancho */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;  /* Alinea los libros a la izquierda */
+}
+
+.libros-item {
+    width: 30%;  /* Los libros ocupan el 30% del ancho cada uno */
+    min-width: 250px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.libros-item p {
+    margin: 5px 0;
+}
+
+.product-item {
+    margin: 5px 0;
+}
+
+.btn-delete {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-delete:hover {
+    opacity: 0.8;
+}
+
+/* Responsividad para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    .main-container {
+        flex-direction: column;  /* Apila los elementos en pantallas pequeñas */
+    }
+
+    .search-section, .botones-container, .libros-section {
+        width: 100%;  /* Las secciones ocupan el 100% en pantallas pequeñas */
+    }
+
+    .libros-item {
+        width: 100%;  /* Los libros ocupan el 100% en pantallas pequeñas */
+        max-width: none;
+    }
+}
+

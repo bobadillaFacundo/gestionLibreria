@@ -18,3 +18,9 @@ document.querySelectorAll('.btn-delete').forEach(button => {
         }
     )
 })
+
+document.querySelectorAll('.btn-volver-libro').forEach(button => {
+    button.addEventListener('click', () => {
+        window.location.href = `http://localhost:8000/api/libros/principal`
+    })
+})

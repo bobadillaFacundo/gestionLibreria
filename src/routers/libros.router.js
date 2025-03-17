@@ -1,6 +1,7 @@
 import express from "express"
 import { obtenerDocumento, deleteDocumento, ERROR } from "../utils.js"
 import librosModel from '../models/libros.js'
+import autoresModel from '../models/autores.js'
 import __dirname from "../utils.js"
 import mongoose from 'mongoose'
 
@@ -41,8 +42,9 @@ router.get('/', async (req, res) => {
 
 router.get("/:cid", async (req, res) => {
     try {
-        const result = await obtenerDocumento(req.params.cid, librosModel)
-
+        const cid = String(req.params.cid); 
+        const result = await librosModel
+        .find({ titulo: { $regex: `${cid}`, $options: 'i' } }) 
         if (!result) {
             return ERROR(res, `Error del servidor: ID no Existe`)
         }
@@ -50,9 +52,9 @@ router.get("/:cid", async (req, res) => {
         result.save
 
         
-        return res.render('libros', {
+        return res.render('libro', {
             style: 'index.css',
-            autor: result
+            libros: result
         })
 
     } catch (error) {
@@ -66,20 +68,25 @@ router.post("/", (async (req, res) => {
         return ERROR(res, `Campos Vacios`)
     }
     
-    const nuevocategoria = new librosModel({
+    const nuevolibro = new librosModel({
         titulo: libro.titulo,
         descripcion: libro.descripcion,
-        autor: new mongoose.Types.ObjectId(libro.autor) 
-          ,
+        autor: new mongoose.Types.ObjectId(libro.autor) ,
         precio: libro.precio,
         estado: libro.estado,
         cantidad: libro.cantidad,
         categorias:  libro.categorias.map(id => new mongoose.Types.ObjectId(id)) 
     })
     
+    const autor = await obtenerDocumento(libro.autor, autoresModel)
+
+    autor.libros.push(nuevolibro)
+
+    autor.save()
+
     try {
-        const guardarcategoria = await nuevocategoria.save()
-        res.json( guardarcategoria)
+        const guardarlibro = await nuevolibro.save()
+        res.json( guardarlibro )
     } catch (error) {
         console.error(`Error al insertar documento, ${error}`)
         ERROR(res, `Error del servidor: ${error}`)
