@@ -70,39 +70,3 @@ document.querySelectorAll('.btn-createlibro').forEach(button => {
     })
 })
 
-document.querySelector('#formC').addEventListener('submit', async () => {
-    
-    const form = document.getElementById('formC'); // Verifica que este ID sea correcto
-
-        const data = {
-            titulo: document.getElementById('titulo').value,
-            descripcion: document.getElementById('descripcion').value,
-            autor: document.getElementById('autor').value,
-            precio: document.getElementById('precio').value,
-            cantidad: document.getElementById('cantidad').value,
-            categorias: document.getElementById('categorias').value
-        };
-
-        console.log("Enviando datos...");
-
-        try {
-            const response = await fetch('http://localhost:8000/api/libros', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            });
-
-            const result = await response.json();
-            console.log("Respuesta recibida:", result);
-            
-            if (response.ok) {
-                alert("Libro creado con éxito"); 
-                form.reset(); // Limpia el formulario sin recargar la página
-            } else {
-                alert(result.message);
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            alert('Error al crear el libro');
-        }
-    })

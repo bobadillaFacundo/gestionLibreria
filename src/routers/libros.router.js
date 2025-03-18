@@ -114,9 +114,8 @@ router.post("/", (async (req, res) => {
             autor1._id, 
             { $push: { libros: guardarlibro._id } }
         )
-        
-        //res.status(200).json({ message: 'Libro creado con éxito' })
-        res.redirect('/api/libros/crud')
+        res.status(200).json({ message: 'Libro creado con éxito' })
+        formCA.reset()
     } catch (error) {
         console.error(`Error al insertar documento, ${error}`)
         ERROR(res, `Error del servidor: ${error}`)
