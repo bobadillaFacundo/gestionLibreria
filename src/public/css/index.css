@@ -59,7 +59,7 @@ body {
     margin-top: 10px;
 }
 
-.botones-container button {
+.botones-container button,.buttonCrearAutor,.buttonCrearLibro, .buttonCrearCategoria {
     width: 30%;
     padding: 10px;
     background-color: #007bff;
