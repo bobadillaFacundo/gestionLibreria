@@ -73,6 +73,17 @@ router.get("/:cid", async (req, res) => {
     }
 })
 
+router.delete("/:cid", async (req, res) => {
+    await deleteDocumento(req.params.cid,librosModel).then(result => {
+        if (result.deletedCount === 0) {
+            return ERROR(res, `Error del servidor: ID no Existe`)
+        }
+        return res.json('Se elimino el categoria')
+    }).catch(error => {
+        ERROR(res, `Error del servidor: ${error}`)
+    })
+})
+
 router.post("/", (async (req, res) => {
     const libro = req.body
     
@@ -103,49 +114,14 @@ router.post("/", (async (req, res) => {
             autor1._id, 
             { $push: { libros: guardarlibro._id } }
         )
-        res.status(201).json({ message: 'Libro creado con éxito' })
+        
+        //res.status(200).json({ message: 'Libro creado con éxito' })
+        res.redirect('/api/libros/crud')
     } catch (error) {
         console.error(`Error al insertar documento, ${error}`)
         ERROR(res, `Error del servidor: ${error}`)
     }
 }))
-
-router.delete("/:cid", async (req, res) => {
-    await deleteDocumento(req.params.cid,librosModel).then(result => {
-        if (result.deletedCount === 0) {
-            return ERROR(res, `Error del servidor: ID no Existe`)
-        }
-        return res.json('Se elimino el categoria')
-    }).catch(error => {
-        ERROR(res, `Error del servidor: ${error}`)
-    })
-})
-
-router.post("/", (async (req, res) => {
-    const libro = req.body
-    if (!libro.titulo || !libro.descripcion || !libro.autor || !libro.precio || !libro.cantidad || !libro.categorias) {
-        return ERROR(res, `Campos Vacios`)
-    }
-
-    const nuevolibro = new librosModel({
-        titulo: libro.titulo,
-        descripcion: libro.descripcion, 
-        autor: new mongoose.Types.ObjectId(libro.autor) ,
-        precio: libro.precio,   
-        estado: libro.estado,
-        cantidad: libro.cantidad,   
-        categorias:  libro.categorias.map(id => new mongoose.Types.ObjectId(id)) 
-    })
-    await nuevolibro.populate({ path: 'autores' }, { path: 'libros' })
-    try {
-        const guardaerAutor = await nuevolibro.save()
-        res.json( guardaerAutor )
-    } catch (error) {
-        console.error(`Error al insertar documento, ${error}`)
-        ERROR(res, `Error del servidor: ${error}`)
-    }
-}))
-
 
 
 

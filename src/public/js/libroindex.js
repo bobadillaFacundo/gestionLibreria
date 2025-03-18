@@ -6,7 +6,7 @@ document.querySelectorAll('.btn-volver-libro').forEach(button => {
 })
 
 document.querySelector('.buscarLibro').addEventListener('click', async () => {
-    const idInput = document.getElementById('IDL').value;
+    const idInput = document.getElementById('IDLFINAL').value;
     if (idInput) {
         window.location.href = `http://localhost:8000/api/libros/${idInput}`;
     } else {
@@ -22,8 +22,9 @@ document.querySelectorAll('.btn-delete').forEach(button => {
                 method: 'DELETE'
             })
             const result = await response.json()
-            alert(result.message)
+
             if (response.ok) {
+                alert("Libro eliminado con exito")
                 window.location.href = `http://localhost:8000/api/libros/principal`
             }
         } catch (error) {
@@ -69,14 +70,10 @@ document.querySelectorAll('.btn-createlibro').forEach(button => {
     })
 })
 
+document.querySelector('#formC').addEventListener('submit', async () => {
+    
+    const form = document.getElementById('formC'); // Verifica que este ID sea correcto
 
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('formC')
-
-    form.addEventListener('submit', async (event) => {
-        event.preventDefault(); // Evita la recarga del formulario
-
-        // Crear el objeto de datos con los valores del formulario
         const data = {
             titulo: document.getElementById('titulo').value,
             descripcion: document.getElementById('descripcion').value,
@@ -86,6 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
             categorias: document.getElementById('categorias').value
         };
 
+        console.log("Enviando datos...");
+
         try {
             const response = await fetch('http://localhost:8000/api/libros', {
                 method: 'POST',
@@ -93,21 +92,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(data)
             });
 
-            const result = await response.json()
-
+            const result = await response.json();
+            console.log("Respuesta recibida:", result);
+            
             if (response.ok) {
-                // Si la operación fue exitosa, mostrar un alert con el mensaje
-                alert(result.message) // Mostrar el mensaje de éxito
-                form.reset() // Limpiar el formulario si es necesario
-                location.reload();
-
+                alert("Libro creado con éxito"); 
+                form.reset(); // Limpia el formulario sin recargar la página
             } else {
-                // Si hay un error, mostrar el mensaje de error
-                alert(result.message)
+                alert(result.message);
             }
         } catch (error) {
-            console.error('Error:', error)
-            alert('Error al crear el libro')
+            console.error('Error:', error);
+            alert('Error al crear el libro');
         }
     })
-})
