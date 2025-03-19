@@ -1,10 +1,10 @@
 import express from "express"
-import { obtenerDocumento, deleteDocumento, ERROR } from "../utils.js"
+import {  deleteDocumento, ERROR } from "../utils.js"
 import librosModel from '../models/libros.js'
 import autoresModel from '../models/autores.js'
 import categoriasModel from '../models/categorias.js'
 import __dirname from "../utils.js"
-import mongoose from 'mongoose'
+
 
 
 const router = express.Router()
@@ -86,6 +86,7 @@ router.delete("/:cid", async (req, res) => {
 
 router.post("/", (async (req, res) => {
     const libro = req.body
+    console.log(libro)
     
     if (!libro.titulo || !libro.descripcion || !libro.autor || !libro.precio || !libro.cantidad || !libro.categorias) {
         return ERROR(res, `Campos Vacios`)
@@ -115,7 +116,7 @@ router.post("/", (async (req, res) => {
             { $push: { libros: guardarlibro._id } }
         )
         res.status(200).json({ message: 'Libro creado con éxito' })
-        formCA.reset()
+
     } catch (error) {
         console.error(`Error al insertar documento, ${error}`)
         ERROR(res, `Error del servidor: ${error}`)

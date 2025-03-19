@@ -1,6 +1,7 @@
 import autores from "./routers/autores.router.js"
 import categorias from "./routers/categorias.router.js"
 import libros from "./routers/libros.router.js"
+import usuarios from "./routers/usuarios.router.js"
 import express from "express"
 import engine from "express-handlebars"
 import __dirname from './utils.js'
@@ -15,7 +16,7 @@ const app = express()
 // Configura Express para servir archivos estáticos desde la carpeta "public"
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Middleware para analizar el cuerpo de la solicitud
+// Middleware para analizar el cuerpo de la solicitud)
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -23,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/autores', autores);
 app.use('/api/categorias', categorias);
 app.use('/api/libros', libros);
+app.use('/api/usuarios', usuarios);
 
 
 // Configuración del motor de vistas

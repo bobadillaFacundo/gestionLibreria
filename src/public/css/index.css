@@ -212,3 +212,42 @@ header {
 .button-primary:hover {
     background-color: #007bff;
 }
+
+.libros-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente línea si no caben */
+    gap: 20px; /* Espacio entre elementos */
+    justify-content: flex-start; /* Alinea los elementos al inicio */
+}
+
+.libros-item {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    width: 200px; /* Ajusta el tamaño según sea necesario */
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.libros-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente línea si no caben */
+    gap: 20px; /* Espacio entre elementos */
+    justify-content: flex-start; /* Alinea los elementos a la izquierda */
+}
+
+.libros-item {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    width: 250px; /* Ajusta el tamaño según sea necesario */
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.product-item {
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    margin-top: 10px;
+    text-align: left;
+}

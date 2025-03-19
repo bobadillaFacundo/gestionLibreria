@@ -8,19 +8,19 @@ document.querySelectorAll('.btn-volver-libro').forEach(button => {
 document.querySelectorAll('.buttonCrearLibro').forEach(button => {
     button.addEventListener('click', async () => {
     
-    const formCA = document.getElementById('formCA');
+    const formCA = document.getElementById('formCALibro');
         event.preventDefault();
-    
+        
         const data = {
             titulo: document.getElementById('titulo').value,
             descripcion: document.getElementById('descripcion').value,
             autor: document.getElementById('autor').value,
             precio: document.getElementById('precio').value,
             cantidad: document.getElementById('cantidad').value,
-            categorias: document.getElementById('categorias').value
+            categorias: Array.from(document.getElementById('categorias').selectedOptions).map(option => option.value)
+
         };
 
-        console.log("Enviando datos...");
 
         try {
             const response = await fetch('http://localhost:8000/api/libros', {
