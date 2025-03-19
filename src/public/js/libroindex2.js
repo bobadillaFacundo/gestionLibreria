@@ -1,7 +1,7 @@
 
 document.querySelectorAll('.btn-volver-libro').forEach(button => {
     button.addEventListener('click', () => {
-        window.location.href = `http://localhost:8000/api/libros/principal`
+        window.location.href = `http://localhost:8000/api/usuarios/gestion`
     })
 })
 

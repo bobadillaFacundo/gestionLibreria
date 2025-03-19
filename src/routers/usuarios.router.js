@@ -23,6 +23,16 @@ router.get('/principal', async (req, res) => {
 })
 
 
+router.get('/gestion', async (req, res) => {
+    try {
+        res.render('index', {
+            style: 'index.css',
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error del servidor');
+    }
+})
 router.get('/perfil/:id', async (req, res) => {
     try {
         const usuario = await usuariosModel.findById(req.params.id).lean(); // .lean() para Handlebars

@@ -1,7 +1,8 @@
 
-document.querySelectorAll('.btn-volver-autores').forEach(button => {
+
+document.querySelectorAll('.btn-volver-libro').forEach(button => {
     button.addEventListener('click', () => {
-        window.location.href = `http://localhost:8000/api/autores/principal`
+        window.location.href = `http://localhost:8000/api/usuarios/gestion`
     })
 })
 
@@ -62,7 +63,7 @@ document.querySelectorAll('.btn-delete-autor').forEach(button => {
 })
 document.querySelectorAll('.btn-volver-libro').forEach(button => {
     button.addEventListener('click', () => {
-        window.location.href = `http://localhost:8000/api/libros/principal`
+        window.location.href = `http://localhost:8000/api/usuarios/gestion`
     })
 })
 

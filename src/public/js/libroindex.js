@@ -1,7 +1,7 @@
 
 document.querySelectorAll('.btn-volver-libro').forEach(button => {
     button.addEventListener('click', () => {
-        window.location.href = `http://localhost:8000/api/libros/principal`
+        window.location.href = `http://localhost:8000/api/usuarios/gestion`
     })
 })
 
@@ -42,13 +42,6 @@ document.querySelectorAll('.btn-categorias').forEach(button => {
     })
 })
 
-document.querySelectorAll('.btn-autor').forEach(button => {
-    button.addEventListener('click', async () => {
-        window.location.href = `http://localhost:8000/api/autores/principal`
-
-    })
-})
-
 document.querySelectorAll('.btn-createautor').forEach(button => {
     button.addEventListener('click', async () => {
         window.location.href = `http://localhost:8000/api/autores/crud`
@@ -66,6 +59,13 @@ document.querySelectorAll('.btn-createcategoria').forEach(button => {
 document.querySelectorAll('.btn-createlibro').forEach(button => {
     button.addEventListener('click', async () => {
         window.location.href = `http://localhost:8000/api/libros/crud`
+
+    })
+})
+
+document.querySelectorAll('.btn-autor').forEach(button => {
+    button.addEventListener('click', async () => {
+        window.location.href = `http://localhost:8000/api/autores/principal`
 
     })
 })
