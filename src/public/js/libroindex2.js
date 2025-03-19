@@ -44,3 +44,39 @@ document.querySelectorAll('.buttonCrearLibro').forEach(button => {
         }
     })
 })
+
+
+document.querySelectorAll('.buttonCrearLibro').forEach(button => {
+    button.addEventListener('click', async () => {
+    
+    const formCA = document.getElementById('formC');
+        event.preventDefault();
+        
+        const data = {
+            Usuario: document.getElementById('Usuario').value,
+            Contrasenia: document.getElementById('ContraseniaUsuario').value
+        };
+
+
+        try {
+            const response = await fetch('http://localhost:8000/api/usuarios/perfil', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            console.log("Respuesta recibida:", result);
+            
+            if (response.ok) {
+                alert("Libro creado con éxito"); 
+                formCA.reset()
+            } else {
+                alert(result.message);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error al crear el libro');
+        }
+    })
+})
