@@ -1,16 +1,17 @@
 import express from "express"
-import {  deleteDocumento, ERROR } from "../utils.js"
+import {  deleteDocumento, ERROR } from "../utils/utils.js"
 import librosModel from '../models/libros.js'
 import autoresModel from '../models/autores.js'
 import categoriasModel from '../models/categorias.js'
-import __dirname from "../utils.js"
+import __dirname from "../utils/utils.js"
+import authMiddleware from '../middlewares/authMiddleware.js'
 
 
 
 const router = express.Router()
 router.use(express.static(__dirname + "/public"))
 
-router.get('/principal', async (req, res) => {
+router.get('/principal',authMiddleware, async (req, res) => {
     try {
         const result = await librosModel.find()
             .populate({ path: 'autor' })   
@@ -26,8 +27,23 @@ router.get('/principal', async (req, res) => {
     }
 })
 
+router.get('/principalGestion',authMiddleware, async (req, res) => {
+    try {
+        const result = await librosModel.find()
+            .populate({ path: 'autor' })   
+            .populate({ path: 'categorias' })
 
-router.get('/', async (req, res) => {
+        res.render('librosGestion', {
+            style: 'index.css',
+            libros: result
+        });
+    } catch (error) {
+        console.error("Error al obtener los libros:", error);
+        res.status(500).send("Error del servidor")
+    }
+})
+
+router.get('/',authMiddleware, async (req, res) => {
     try {
         const result = await librosModel.find()
             .populate({ path: 'autor' })   
@@ -41,7 +57,7 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.get("/crud", async (req, res) => {
+router.get("/crud",authMiddleware, async (req, res) => {
     const autor = await autoresModel.find()
     const categorias = await categoriasModel.find()
     return res.render('createLibro', {
@@ -51,7 +67,7 @@ router.get("/crud", async (req, res) => {
     })
 })
 
-router.get("/:cid", async (req, res) => {
+router.get("/:cid",authMiddleware,async (req, res) => {
     try {
         const cid = String(req.params.cid); 
         const result = await librosModel
@@ -73,7 +89,7 @@ router.get("/:cid", async (req, res) => {
     }
 })
 
-router.delete("/:cid", async (req, res) => {
+router.delete("/:cid",authMiddleware, async (req, res) => {
     await deleteDocumento(req.params.cid,librosModel).then(result => {
         if (result.deletedCount === 0) {
             return ERROR(res, `Error del servidor: ID no Existe`)
@@ -84,7 +100,7 @@ router.delete("/:cid", async (req, res) => {
     })
 })
 
-router.post("/", (async (req, res) => {
+router.post("/", authMiddleware, (async (req, res) => {
     const libro = req.body
     console.log(libro)
     

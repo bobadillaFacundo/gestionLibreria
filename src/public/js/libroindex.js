@@ -70,3 +70,9 @@ document.querySelectorAll('.btn-autor').forEach(button => {
     })
 })
 
+document.querySelectorAll('.btn-volver-gestion').forEach(button => {
+    button.addEventListener('click', async () => {
+        window.location.href = `http://localhost:8000/api/usuarios/gestion`
+
+    })
+})
