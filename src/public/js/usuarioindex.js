@@ -33,6 +33,8 @@ document.getElementById('formCAS').addEventListener('submit', async function (ev
 
         // Guardar el token en el localStorage
         localStorage.setItem('token', token)
+        localStorage.setItem('email', usuario)
+
         //definir una cookies
         document.cookie = `token=${token}; max-age=3600; path=/`
         

@@ -32,14 +32,10 @@ document.getElementById('formC').addEventListener('submit', async function (even
         // Guardar el token en el localStorage
         localStorage.setItem('token', token);
 
-        await fetch('http://localhost:8000/api/usuarios/perfilU', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}` // Enviar el token en los encabezados
-            },
-            body: JSON.stringify({ usuario: usuario, password: password })
-        })
+        //definir una cookies
+        document.cookie = `token=${token}; max-age=3600; path=/`    
+
+        window.location.href = `http://localhost:8000/api/usuarios/gestion`
 
     } catch (err) {
         console.log('Error al realizar la solicitud:', err)

@@ -39,7 +39,7 @@ router.post("/usuarioCrea", async (req, res) => {
     const nuevoUsuario = new usuariosModel({
         email: usuario.username,
         password: bcrypt.hashSync(usuario.password, 10),
-        tipo:  "admin"
+        tipo:  "comun"
     })
     try {
         const guardarusuari = await nuevoUsuario.save()

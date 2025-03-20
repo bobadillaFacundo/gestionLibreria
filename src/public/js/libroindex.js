@@ -76,3 +76,8 @@ document.querySelectorAll('.btn-volver-gestion').forEach(button => {
 
     })
 })
+
+document.querySelector('.perfil').addEventListener('click', async () => {
+    const usuario = localStorage.getItem('usuario')
+    window.location.href = `http://localhost:8000/api/usuarios/perfil/${usuario}`;
+})
