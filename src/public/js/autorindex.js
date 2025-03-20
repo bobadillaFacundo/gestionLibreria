@@ -2,7 +2,7 @@
 
 document.querySelectorAll('.btn-volver-libro').forEach(button => {
     button.addEventListener('click', () => {
-        window.location.href = `http://localhost:8000/api/usuarios/gestion`
+        window.location.href = `/api/usuarios/gestion`
     })
 })
 
@@ -11,7 +11,7 @@ document.querySelectorAll('.button').forEach(button => {
         const idInput = document.getElementById('IDA').value
 
         if (idInput) {
-            window.location.href = `http://localhost:8000/api/autores/${idInput}`
+            window.location.href = `/api/autores/${idInput}`
         } else {
             alert('Error, nombre de autor')
         }
@@ -23,7 +23,7 @@ document.querySelectorAll('.btn-delete-libro').forEach(button => {
     button.addEventListener('click', async () => {
         const id = button.getAttribute('data-id-libro')
         try {
-            const response = await fetch(`http://localhost:8000/api/libros/${id}`, {
+            const response = await fetch(`/api/libros/${id}`, {
                 method: 'DELETE'
             })
             await response.json()
@@ -44,7 +44,7 @@ document.querySelectorAll('.btn-delete-autor').forEach(button => {
     button.addEventListener('click', async () => {
         const id = button.getAttribute('data-id-autor')
         try {
-            const response = await fetch(`http://localhost:8000/api/autores/${id}`, {
+            const response = await fetch(`/api/autores/${id}`, {
                 method: 'DELETE'
             })
            await response.json()
@@ -63,7 +63,7 @@ document.querySelectorAll('.btn-delete-autor').forEach(button => {
 })
 document.querySelectorAll('.btn-volver-libro').forEach(button => {
     button.addEventListener('click', () => {
-        window.location.href = `http://localhost:8000/api/usuarios/gestion`
+        window.location.href = `/api/usuarios/gestion`
     })
 })
 
@@ -77,7 +77,7 @@ document.querySelectorAll('.buttonCrearAutor').forEach(button => {
         }
 
         try {
-            const result = await fetch('http://localhost:8000/api/autores', {
+            const result = await fetch('/api/autores', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)

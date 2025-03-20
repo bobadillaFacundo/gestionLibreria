@@ -8,7 +8,7 @@ document.getElementById('formC').addEventListener('submit', async function (even
     
     try {
         // Hacer la solicitud para obtener el token
-        const response = await fetch('http://localhost:8000/api/login/usuarioCrea', {
+        const response = await fetch('/api/login/usuarioCrea', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -27,7 +27,7 @@ document.getElementById('formC').addEventListener('submit', async function (even
         // Obtener el token de la respuesta
         const { token } = await response.json();
         
-        console.log(token)
+        console.log(token.token)
         
         // Guardar el token en el localStorage
         localStorage.setItem('token', token);
@@ -35,7 +35,7 @@ document.getElementById('formC').addEventListener('submit', async function (even
         //definir una cookies
         document.cookie = `token=${token}; max-age=3600; path=/`    
 
-        window.location.href = `http://localhost:8000/api/usuarios/gestion`
+        window.location.href = `/api/usuarios/libros`
 
     } catch (err) {
         console.log('Error al realizar la solicitud:', err)
@@ -43,5 +43,5 @@ document.getElementById('formC').addEventListener('submit', async function (even
 })
 document.querySelector('.buttonLoginUsuario').addEventListener('click', async () => {
   
-    window.location.href = `http://localhost:8000/api/login/principal`  
+    window.location.href = `/api/login/principal`  
 })

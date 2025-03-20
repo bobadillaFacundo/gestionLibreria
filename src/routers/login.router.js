@@ -48,9 +48,9 @@ router.post("/usuarioCrea", async (req, res) => {
                 process.env.JWT_SECRET, 
                 { expiresIn: '1h' } // El token expira en 1 hora
             )
-        console.log(token);
-        
-        res.json({ token })
+
+            
+        res.json({ token})
     } catch (error) {
         console.error(`Error al insertar documento, ${error}`)
     }

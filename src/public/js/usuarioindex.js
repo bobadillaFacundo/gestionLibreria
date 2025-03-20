@@ -1,6 +1,6 @@
 document.querySelector('.buttonCrearUsuario').addEventListener('click', async () => {
   
-        window.location.href = `http://localhost:8000/api/login/usuariosCrear`
+        window.location.href = `/api/login/usuariosCrear`
    
 })
 
@@ -14,7 +14,7 @@ document.getElementById('formCAS').addEventListener('submit', async function (ev
 
     try {
         // Hacer la solicitud para obtener el token
-        const response = await fetch('http://localhost:8000/api/login/login', {
+        const response = await fetch('/api/login/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -39,7 +39,7 @@ document.getElementById('formCAS').addEventListener('submit', async function (ev
         document.cookie = `token=${token}; max-age=3600; path=/`
         
         // Redireccionar a la nueva página
-        window.location.href =`http://localhost:8000/api/usuarios/perfil/${usuario}`
+        window.location.href =`/api/usuarios/perfil/${usuario}`
 
     } catch (err) {
         console.log('Error al realizar la solicitud:', err);

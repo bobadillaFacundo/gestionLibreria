@@ -3,7 +3,7 @@ document.querySelectorAll('.btn-delete-categoria').forEach(button => {
     button.addEventListener('click', async () => {
         const id = button.getAttribute('data-id-categoria')
         try {
-            const response = await fetch(`http://localhost:8000/api/categorias/${id}`, {
+            const response = await fetch(`/api/categorias/${id}`, {
                 method: 'DELETE'
             })
             await response.json()
@@ -22,7 +22,7 @@ document.querySelectorAll('.btn-delete-categoria').forEach(button => {
 
 document.querySelectorAll('.btn-volver-gestion').forEach(button => {
     button.addEventListener('click', () => {
-        window.location.href = `http://localhost:8000/api/usuarios/gestion`
+        window.location.href = `/api/usuarios/gestion`
     })
 })
 
@@ -36,7 +36,7 @@ document.querySelectorAll('.buttonCrearCategoria').forEach(button => {
         }
 
         try {
-            const result = await fetch('http://localhost:8000/api/categorias', {
+            const result = await fetch('/api/categorias', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
