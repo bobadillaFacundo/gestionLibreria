@@ -151,7 +151,7 @@ header {
     text-align: left;
 }
 
-.btn-volver, .btn-volver-libro, .btn-volver-autor, .btn-volver-categoria {
+.btn-volver,.btn-volver-gestion, .btn-volver-libro, .btn-volver-autor, .btn-volver-categoria {
     background-color: #fff;
     color: #007bff;
     border: none;
