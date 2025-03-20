@@ -1,3 +1,7 @@
+<head>
+    <link type="text/css" rel="stylesheet" href="/css/index.css">
+</head>
+
 <header>
     <button class="btn-volver-libro">Volver</button>
 </header>
@@ -12,7 +16,7 @@
             <select id="autor" name="autor">
                 {{#each autores}}
                 <option value="{{nombre}}">{{nombre}}</option>
-                {{/each}}               
+                {{/each}}
             </select>
             <input type="text" id="precio" class="input" placeholder="precio" name="precio">
             <input type="text" id="cantidad" class="input" placeholder="cantidad" name="cantidad">
@@ -21,9 +25,9 @@
                 <option value="{{nombre}}">{{nombre}}</option>
                 {{/each}}
             </select>
-            <button id= "idPrueba"type="submit" class="buttonCrearLibro">Crear</button>
+            <button id="idPrueba" type="submit" class="buttonCrearLibro">Crear</button>
         </form>
     </section>
 </body>
 
-<script src="/js/libroindex2.js" ></script>
+<script src="/js/libroindex2.js"></script>

@@ -15,7 +15,7 @@ router.use(express.static(__dirname + "/public"))
 router.get('/principal', async (req, res) => {
     try {
         res.render('Usuarios', {
-            style: 'index.css',
+            style: 'index.css'
         })
     } catch (error) {
         console.error(error);
@@ -25,7 +25,7 @@ router.get('/principal', async (req, res) => {
 
 router.get("/usuariosCrear", async (req, res) => {
     return res.render('crearusuario', {
-        style: 'index.css',
+        style: 'index.css'
     })
 })
 

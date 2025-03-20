@@ -20,7 +20,7 @@ document.querySelectorAll('.btn-delete-categoria').forEach(button => {
     )
 })
 
-document.querySelectorAll('.btn-volver-libro').forEach(button => {
+document.querySelectorAll('.btn-volver-gestion').forEach(button => {
     button.addEventListener('click', () => {
         window.location.href = `http://localhost:8000/api/usuarios/gestion`
     })

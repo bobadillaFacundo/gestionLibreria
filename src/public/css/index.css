@@ -251,3 +251,52 @@ header {
     margin-top: 10px;
     text-align: left;
 }
+/* ================== Sección de Usuarios ================== */
+.usuarios-section {
+    width: 50%;
+    margin-top: 20px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Ajuste de inputs para usuario y contraseña */
+.inputU, .inputC {
+    width: 80%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Botón para validar usuario */
+.buttonUsuario {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.buttonUsuario:hover {
+    opacity: 0.8;
+}
+
+/* Botón para crear usuario */
+.buttonCrearUsuario {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.buttonCrearUsuario:hover {
+    opacity: 0.8;
+}

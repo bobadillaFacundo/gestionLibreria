@@ -1,6 +1,6 @@
 document.querySelector('.buttonCrearUsuario').addEventListener('click', async () => {
   
-        window.location.href = `http://localhost:8000/api/login/usuariosCrear`;
+        window.location.href = `http://localhost:8000/api/login/usuariosCrear`
    
 })
 
@@ -33,16 +33,11 @@ document.getElementById('formCAS').addEventListener('submit', async function (ev
 
         // Guardar el token en el localStorage
         localStorage.setItem('token', token)
-
-        // Hacer la solicitud para obtener el perfil del usuario
-        await fetch('http://localhost:8000/api/usuarios/perfilU', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}` // Enviar el token en los encabezados
-            },
-            body: JSON.stringify({ usuario: usuario, password: password })
-        })
+        //definir una cookies
+        document.cookie = `token=${token}; max-age=3600; path=/`
+        
+        // Redireccionar a la nueva página
+        window.location.href =`http://localhost:8000/api/usuarios/perfil/${usuario}`
 
     } catch (err) {
         console.log('Error al realizar la solicitud:', err);

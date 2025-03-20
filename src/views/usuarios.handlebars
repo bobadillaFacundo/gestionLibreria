@@ -1,10 +1,15 @@
-<link rel="stylesheet" href="/css/index.css">
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Usuario</title>
+    <base href="/"> 
+    <link  type="text/css" rel="stylesheet" href="/css/index.css">
+</head>
 <body>
     <!-- Contenedor principal -->
     <div class="main-container">
 
-        <section class="usuarios-section">
+              <section class="usuarios-section">
                <h2 class="toggle-form" data-target="formU">Validar Usuario</h2>
                 <form id="formCAS" class="form" method="post" action="/api/usuarios/perfil">
                     <input type="text" id="U" class="inputU" placeholder="Usurio" name="usuario">

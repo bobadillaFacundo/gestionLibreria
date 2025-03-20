@@ -45,3 +45,7 @@ document.getElementById('formC').addEventListener('submit', async function (even
         console.log('Error al realizar la solicitud:', err)
     }
 })
+document.querySelector('.buttonLoginUsuario').addEventListener('click', async () => {
+  
+    window.location.href = `http://localhost:8000/api/login/principal`  
+})
