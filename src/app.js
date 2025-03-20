@@ -4,21 +4,16 @@ import libros from "./routers/libros.router.js";
 import usuarios from "./routers/usuarios.router.js";
 import express from "express";
 import {engine} from "express-handlebars";
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import __dirname from './utils/utils.js'
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import authMiddleware from "./middlewares/authMiddleware.js";
 import login from "./routers/login.router.js";
 import path from "path"
 
-// Obtener el __dirname en módulos ES6
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+dotenv.config()
 
-dotenv.config();
-
-const app = express();
+const app = express()
 
 // Configura Express para servir archivos estáticos desde la carpeta "public"
 app.use(express.static(path.join(__dirname, 'public')));
@@ -35,9 +30,7 @@ app.engine('handlebars', engine({
     }
 }));
 app.set('view engine', 'handlebars');
-
-// Configuración de la ruta de vistas
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '..', 'views'))
 
 // Rutas de archivos estáticos
 app.use('/css', express.static(path.join(__dirname, 'src', 'public', 'css')));
@@ -58,7 +51,7 @@ mongoose.connect(process.env.MONGO_DB_URL).then(() => {
 });
 
 // Iniciar servidor
-const port = 8000;
+const port =  process.env.PORT 
 app.listen(port, () => {
     console.log(`Servidor escuchando en http://localhost:${port}`);
 });
