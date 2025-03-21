@@ -5,6 +5,13 @@ document.querySelectorAll('.btn-volver-libro').forEach(button => {
     })
 })
 
+
+document.querySelectorAll('.sesion').forEach(button => {
+    button.addEventListener('click', () => {
+        localStorage.removeItem('email')
+        window.location.href = `/api/login/principal`
+    })
+})
 document.querySelector('.buscarLibro').addEventListener('click', async () => {
     const idInput = document.getElementById('IDLFINAL').value 
     if (idInput) {

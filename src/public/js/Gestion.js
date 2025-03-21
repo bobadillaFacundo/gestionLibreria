@@ -46,4 +46,10 @@ document.querySelectorAll('.btn-carrito').forEach(button => {
 
     })
 })
+document.querySelectorAll('.btn-sesion').forEach(button => {
+    button.addEventListener('click', async () => {
+        localStorage.removeItem('email')
+        window.location.href = `/api/login/principal`
 
+    })
+})

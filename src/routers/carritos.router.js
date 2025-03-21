@@ -138,10 +138,7 @@ router.post("/agregarCarrito", authMiddleware, async (req, res) => {
         if (!usuarioEncontrado || !usuarioEncontrado.carrito) {
             return res.status(404).json({ error: "Carrito no asignado al usuario" })
         }
-
-        // Obtener el carrito
-        const carrito = await carritosModel.findById(usuarioEncontrado.carrito[usuarioEncontrado.carrito.length - 1]._id)
-        if (!carrito) {
+        if(usuarioEncontrado.carrito.length === 0){
             const nuevoCarrito = new carritosModel({
                 usuario: usuarioEncontrado._id,
                 libros: []
@@ -153,10 +150,11 @@ router.post("/agregarCarrito", authMiddleware, async (req, res) => {
             await usuarioEncontrado.save()
             return res.json({
                 mensaje: "Libro agregado al carrito con exito"
-            })
-
-
+            })        
         }
+        // Obtener el carrito
+        const carrito = await carritosModel.findById(usuarioEncontrado.carrito[usuarioEncontrado.carrito.length - 1]._id)
+    
         // Validar ID del libro
         if (!mongoose.Types.ObjectId.isValid(libro)) {
             return res.status(400).json({ error: "ID de libro no válido" })
