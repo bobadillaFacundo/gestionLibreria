@@ -7,7 +7,7 @@ document.querySelectorAll('.btn-categorias').forEach(button => {
 
 document.querySelectorAll('.btn-createautor').forEach(button => {
     button.addEventListener('click', async () => {
-        window.location.href = `api/autores/crud`
+        window.location.href = `/api/autores/crud`
 
     })
 })

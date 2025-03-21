@@ -77,13 +77,12 @@ document.querySelectorAll('.buttonCrearAutor').forEach(button => {
         }
 
         try {
-            const result = await fetch('/api/autores', {
+             await fetch('/api/autores', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
             })
-            document.getElementById('formC').reset()
-            alert('Autor creado con exito', result)
+            alert('Autor creado con exito')
             location.reload();
 
         } catch (error) {
