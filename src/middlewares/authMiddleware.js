@@ -4,7 +4,6 @@ dotenv.config()
 
 const authMiddleware = (req, res, next) => {
     console.log("Pasó authMiddleware") 
-    console.log(req.cookies)
     
     const token = req.cookies['token']
     

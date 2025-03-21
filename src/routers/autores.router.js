@@ -14,22 +14,22 @@ router.get('/principal/:email', authMiddleware, async (req, res) => {
         const autores = await autoresModel.find().populate('libros')
         const usuario = await usuariosModel.findOne({email: req.params.email})
         
-        console.log(usuario)
+        console.log("hola",usuario)
               
         // Verifica si el usuario existe antes de proceder
         if (!usuario) {
             return res.status(404).json({ message: 'Usuario no encontrado' });
         }
         
-        if (usuario.tipo === 'admin') {
+        if (usuario.tipo === 'comun') {
 
-            res.render('autores', {
+            res.render('autoresUsuario', {
                 style: 'index.css',
                 autores: autores
             })
         } else {
 
-            res.render('autoresUsuario', {
+            res.render('autores', {
                 style: 'index.css',
                 autores: autores
             })
