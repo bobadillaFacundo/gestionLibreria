@@ -75,9 +75,6 @@ router.get("/:cid",authMiddleware,async (req, res) => {
         if (!result) {
             return ERROR(res, `Error del servidor: ID no Existe`)
         }
-
-        result.save
-
         
         return res.render('libro', {
             style: 'index.css',

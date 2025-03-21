@@ -1,14 +1,12 @@
 import express from "express"
 import __dirname, { obtenerDocumento } from "../utils/utils.js"
 import usuariosModel from "../models/usuarios.js" 
-import x from "dotenv"
+import dotenv from "dotenv"
 import authMiddleware from '../middlewares/authMiddleware.js'
 import librosModel from '../models/libros.js'
-import { obtenerTodosLosDocumentos } from "../utils/utils.js"
 
 
-
-x.config();
+dotenv.config();
 
 const router = express.Router()
 router.use(express.static(__dirname + "/public"))

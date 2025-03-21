@@ -41,9 +41,6 @@ router.get("/:cid",authMiddleware, async (req, res) => {
         if (!result) {
             return ERROR(res, `Error del servidor: ID no Existe`)
         }
-
-        result.save
-
         
         return res.render('categoria', {
             style: 'index.css',
@@ -64,7 +61,7 @@ router.post("/", authMiddleware,(async (req, res) => {
         nombre: categoria.nombre,
     })
     try {
-        const guardarcategoria = await nuevocategoria.save()
+        const guardarcategoria = await nuevocategoria().save()
         res.json( guardarcategoria)
     } catch (error) {
         console.error(`Error al insertar documento, ${error}`)
@@ -74,7 +71,7 @@ router.post("/", authMiddleware,(async (req, res) => {
 
 router.delete("/:cid",authMiddleware, async (req, res) => {
     await deleteDocumento(req.params.cid, categoriasModel).then(result => {
-        if (result.deletedCount === 0) {
+        if (!result || result.deletedCount === 0) {
             return ERROR(res, `Error del servidor: ID no Existe`)
         }
         return res.json('Se elimino el categoria')

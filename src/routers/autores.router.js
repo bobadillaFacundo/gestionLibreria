@@ -14,8 +14,6 @@ router.get('/principal/:email', authMiddleware, async (req, res) => {
         const autores = await autoresModel.find().populate('libros')
         const usuario = await usuariosModel.findOne({email: req.params.email})
         
-        console.log("hola",usuario)
-              
         // Verifica si el usuario existe antes de proceder
         if (!usuario) {
             return res.status(404).json({ message: 'Usuario no encontrado' });
@@ -61,13 +59,10 @@ router.get("/:cid", authMiddleware, async (req, res) => {
         const result = await autoresModel
             .find({ nombre: { $regex: `${cid}`, $options: 'i' } })
             .populate('libros');
-        console.log(result)
 
         if (!result) {
             return res.status(404).json({ error: "Error del servidor: ID no Existe" })
         }
-
-        console.log(result);
 
         return res.render('autor', {
             style: 'index.css',
@@ -75,11 +70,10 @@ router.get("/:cid", authMiddleware, async (req, res) => {
         })
 
     } catch (error) {
-        return res.status(500).json({ error: "Error del servidor: ${error.message} " })
+        return res.status().json({ error: "Error del servidor: ${error.message} " })
     }
 
 })
-
 router.post("/", authMiddleware, (async (req, res) => {
     const autor = req.body
     if (!autor.nombre || !autor.edad) {
@@ -101,7 +95,7 @@ router.post("/", authMiddleware, (async (req, res) => {
 
 router.delete("/:cid", authMiddleware, async (req, res) => {
     await deleteDocumento(req.params.cid, autoresModel).then(result => {
-        if (result.deletedCount === 0) {
+        if (!result ||result.deletedCount === 0) {
             return ERROR(res, `Error del servidor: ID no Existe`)
         }
         return res.json('Se elimino el autor')
@@ -110,23 +104,5 @@ router.delete("/:cid", authMiddleware, async (req, res) => {
     })
 })
 
-router.post("/", authMiddleware, (async (req, res) => {
-    const autor = req.body
-    if (!autor.nombre || !autor.edad) {
-        return ERROR(res, `Campos Vacios`)
-    }
-    const nuevoAutor = new autoresModel({
-        nombre: autor.nombre,
-        edad: autor.edad,
-        libros: []
-    })
-    try {
-        const guardarAutor = await nuevoAutor.save()
-        res.json(guardarAutor)
-    } catch (error) {
-        console.error(`Error al insertar documento, ${error}`)
-        ERROR(res, `Error del servidor: ${error}`)
-    }
-}))
 
 export default router
