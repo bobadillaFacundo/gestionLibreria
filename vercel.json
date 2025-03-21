@@ -1,9 +1,8 @@
 { 
   "redirects": [
     {
-      "source": "/",
-      "destination": "/api/libros",
-      "statusCode": 301
+      "source": "/(.*)",
+      "destination": "/"
     }
   ]
 }
