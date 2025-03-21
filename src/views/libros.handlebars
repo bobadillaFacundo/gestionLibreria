@@ -1,6 +1,7 @@
 <head>
-        <link  type="text/css" rel="stylesheet" href="/css/index.css">
+    <link type="text/css" rel="stylesheet" href="/css/index.css">
 </head>
+
 <body>
     <!-- Contenedor principal -->
     <div class="main-container">
@@ -18,6 +19,7 @@
         <div class="botones-container">
             <button class="btn-autor">Autor</button>
             <button type="button" class="perfil">perfil</button>
+            <button type="button" class="carrito">carrito</button>
         </div>
 
         <!-- Sección de Libros -->
@@ -37,6 +39,7 @@
                     <p>{{nombre}}</p>
                 </div>
                 {{/each}}
+                <button class="btn-compra" data-id="{{_id}}">Agregar a carrito</button>
                 <br>
             </div>
             {{/each}}
@@ -45,4 +48,3 @@
 </body>
 
 <script src="/js/libroindex.js"></script>
-

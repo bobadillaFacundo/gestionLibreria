@@ -23,6 +23,9 @@
                 <label for="text">Categoria:</label>
                 <p><strong>_id:</strong> {{_id}}</p>
                 <p><strong>nombre:</strong> {{nombre}}</p>
+                {{#each libros }}
+                    <p><strong>Titulo:</strong> {{titulo}}</p>
+                {{/each}}
                 <br>
                 <button class="btn-delete-categoria" data-id-categoria={{_id}}>Eliminar Categoria</button>
 

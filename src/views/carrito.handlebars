@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito</title>
+</head>
+
+<body>
+    <!-- Contenedor principal -->
+    <div class="carrito-container">
+        <button class="btn-volver-carrito">Volver</button>
+        <h1>Lista de Libros</h1>
+        <!-- Sección de Libros -->
+        <section class="libros-section">
+            {{#each carrito.libros}}
+            <div class="libros-item">
+                <label for="text">Libro:</label>
+                <p><strong>_id:</strong> {{_id}}</p>
+                <p><strong>autor:</strong>{{autor.nombre}}</p>
+                <p><strong>titulo:</strong> {{titulo}}</p>
+                <p><strong>descripcion:</strong> {{descripcion}}</p>
+                <p><strong>precio:</strong> {{precio}}</p>
+                <p><strong>cantidad:</strong> {{cantidad}}</p>
+                <label for="text">Lista de categorias:</label>
+                {{#each categorias}}
+                <div class="product-item">
+                    <p>{{nombre}}</p>
+                </div>
+                {{/each}}
+                <br>
+            </div>
+            {{/each}}
+        </section>
+    </div>
+</body>
+<script src="/js/carritoindex.js"></script>
+
+</html>

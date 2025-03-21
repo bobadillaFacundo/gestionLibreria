@@ -9,14 +9,17 @@ router.use(express.static(__dirname + "/public"))
 
 
 router.get('/principal', authMiddleware,async (req, res) => {
-    await obtenerTodosLosDocumentos(categoriasModel).then(result => {
-        res.render('categorias', {
+    
+    try {
+        const result = await categoriasModel.find().populate({ path: 'libros' })
+
+    res.render('categorias', {
             style: 'index.css',
             categorias: result
         })
-    }).catch(error => {
-        ERROR(res, `Error del servidor: ${error}`)
-    })
+    } catch (error) {
+        ERROR(res, `Error del servidor: ${error}`)}
+    
 })
 
 router.get("/crud", authMiddleware,async (req, res) => {
@@ -26,17 +29,18 @@ router.get("/crud", authMiddleware,async (req, res) => {
 })
 
 router.get('/', authMiddleware,async (req, res) => {
-    await obtenerTodosLosDocumentos(categoriasModel).then(result => {
+
+    try {
+        const result = await categoriasModel.find().populate({ path: 'libros' })
         res.json(result)
-    }).catch(error => {
-        ERROR(res, `Error del servidor: ${error}`)
-    })
+    } catch (error) {
+        ERROR(res, `Error del servidor: ${error}`)}
 })
 
 
 router.get("/:cid",authMiddleware, async (req, res) => {
     try {
-        const result = await obtenerDocumento(req.params.cid, categoriasModel)
+        const result = await categoriasModel.find({ _id: req.params.cid }).populate({ path: 'libros' })
 
         if (!result) {
             return ERROR(res, `Error del servidor: ID no Existe`)
@@ -59,6 +63,7 @@ router.post("/", authMiddleware,(async (req, res) => {
     }
     const nuevocategoria = new categoriasModel({
         nombre: categoria.nombre,
+        libros: []
     })
     try {
         

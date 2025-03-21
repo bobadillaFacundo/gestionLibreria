@@ -3,8 +3,8 @@ import express from "express"
 import __dirname from "../utils/utils.js"
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
-import dotenv from 'dotenv';
-dotenv.config();
+import dotenv from 'dotenv' 
+dotenv.config() 
 import usuariosModel from "../models/usuarios.js" 
 import { ERROR } from "../utils/utils.js"
 
@@ -18,8 +18,8 @@ router.get('/principal', async (req, res) => {
             style: 'index.css'
         })
     } catch (error) {
-        console.error(error);
-        res.status(500).send('Error del servidor');
+        console.error(error) 
+        res.status(500).send('Error del servidor') 
     }
 })
 

@@ -6,7 +6,7 @@ import authMiddleware from '../middlewares/authMiddleware.js'
 import librosModel from '../models/libros.js'
 
 
-dotenv.config();
+dotenv.config() 
 
 const router = express.Router()
 router.use(express.static(__dirname + "/public"))
@@ -18,8 +18,8 @@ router.get('/gestion',authMiddleware, async (req, res) => {
         })
 
     } catch (error) {
-        console.error(error);
-        res.status(500).send('Error del servidor');
+        console.error(error) 
+        res.status(500).send('Error del servidor') 
     }
 })
 
@@ -35,8 +35,8 @@ router.get('/libros',authMiddleware, async (req, res) => {
         })
         
     } catch (error) {
-        console.error(error);
-        res.status(500).send('Error del servidor');
+        console.error(error) 
+        res.status(500).send('Error del servidor') 
     }
 })
 
@@ -44,18 +44,18 @@ router.get('/perfil/:id', async (req, res) => {
     try {
         const usuario = await usuariosModel.findOne({email: req.params.id})
         if (!usuario) {
-            return res.status(404).send('Usuario no encontrado');
+            return res.status(404).send('Usuario no encontrado') 
         }
         if(usuario.tipo === 'admin'){
-            res.render('admin', { style: 'index.css', usuario });
+            res.render('admin', { style: 'index.css', usuario }) 
         }else{
-            res.render('perfil', { style: 'index.css', usuario });
+            res.render('perfil', { style: 'index.css', usuario }) 
         }
         
             
     } catch (error) {
-        console.error(error);
-        res.status(500).send('Error del servidor');
+        console.error(error) 
+        res.status(500).send('Error del servidor') 
     }
 })
 

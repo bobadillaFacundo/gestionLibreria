@@ -8,8 +8,8 @@ document.querySelectorAll('.btn-volver-libro').forEach(button => {
 document.querySelectorAll('.buttonCrearLibro').forEach(button => {
     button.addEventListener('click', async () => {
     
-    const formCA = document.getElementById('formCALibro');
-        event.preventDefault();
+    const formCA = document.getElementById('formCALibro') 
+        event.preventDefault() 
         
         const data = {
             titulo: document.getElementById('titulo').value,
@@ -19,7 +19,7 @@ document.querySelectorAll('.buttonCrearLibro').forEach(button => {
             cantidad: document.getElementById('cantidad').value,
             categorias: Array.from(document.getElementById('categorias').selectedOptions).map(option => option.value)
 
-        };
+        } 
 
 
         try {
@@ -27,19 +27,19 @@ document.querySelectorAll('.buttonCrearLibro').forEach(button => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
-            });
+            }) 
 
-            const result = await response.json();
+            const result = await response.json() 
             
             if (response.ok) {
-                alert("Libro creado con éxito"); 
+                alert("Libro creado con éxito")  
                 formCA.reset()
             } else {
-                alert(result.message);
+                alert(result.message) 
             }
         } catch (error) {
-            console.error('Error:', error);
-            alert('Error al crear el libro');
+            console.error('Error:', error) 
+            alert('Error al crear el libro') 
         }
     })
 })
@@ -48,13 +48,13 @@ document.querySelectorAll('.buttonCrearLibro').forEach(button => {
 document.querySelectorAll('.buttonCrearLibro').forEach(button => {
     button.addEventListener('click', async () => {
     
-    const formCA = document.getElementById('formC');
-        event.preventDefault();
+    const formCA = document.getElementById('formC') 
+        event.preventDefault() 
         
         const data = {
             Usuario: document.getElementById('Usuario').value,
             Contrasenia: document.getElementById('ContraseniaUsuario').value
-        };
+        } 
 
 
         try {

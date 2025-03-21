@@ -9,7 +9,7 @@ document.querySelectorAll('.btn-delete-categoria').forEach(button => {
             await response.json()
             if (response.ok) {
                 alert("Categoria eliminada con exito")
-                location.reload();
+                location.reload() 
 
             }
         } catch (error) {
@@ -43,7 +43,7 @@ document.querySelectorAll('.buttonCrearCategoria').forEach(button => {
             })
             document.getElementById('formC').reset()
             alert('Categoria creado con exito')
-            location.reload();
+            location.reload() 
 
         } catch (error) {
             console.error('Error:', error)

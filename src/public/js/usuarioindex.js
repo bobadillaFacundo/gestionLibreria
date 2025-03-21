@@ -6,11 +6,11 @@ document.querySelector('.buttonCrearUsuario').addEventListener('click', async ()
 
 
 document.getElementById('formCAS').addEventListener('submit', async function (event) {
-    event.preventDefault(); // Prevenir el envío convencional del formulario
+    event.preventDefault()  // Prevenir el envío convencional del formulario
 
     // Obtener los datos del formulario
-    const usuario = document.getElementById('U').value;
-    const password = document.getElementById('Cu').value;
+    const usuario = document.getElementById('U').value 
+    const password = document.getElementById('Cu').value 
 
     try {
         // Hacer la solicitud para obtener el token
@@ -36,12 +36,12 @@ document.getElementById('formCAS').addEventListener('submit', async function (ev
         localStorage.setItem('email', usuario)
 
         //definir una cookies
-        document.cookie = `token=${token}; max-age=3600; path=/`
+        document.cookie = `token=${token}  max-age=3600  path=/`
         
         // Redireccionar a la nueva página
         window.location.href =`/api/usuarios/perfil/${usuario}`
 
     } catch (err) {
-        console.log('Error al realizar la solicitud:', err);
+        console.log('Error al realizar la solicitud:', err) 
     }
 })

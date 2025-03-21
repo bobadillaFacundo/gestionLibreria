@@ -17,7 +17,7 @@ router.get('/principal/:email', authMiddleware, async (req, res) => {
         
         // Verifica si el usuario existe antes de proceder
         if (!usuario) {
-            return res.status(404).json({ message: 'Usuario no encontrado' });
+            return res.status(404).json({ message: 'Usuario no encontrado' }) 
         }
         
         if (usuario.tipo === 'comun') {
@@ -56,10 +56,10 @@ router.get('/', authMiddleware, async (req, res) => {
 
 router.get("/:cid", authMiddleware, async (req, res) => {
     try {
-        const cid = String(req.params.cid);
+        const cid = String(req.params.cid) 
         const result = await autoresModel
             .find({ nombre: { $regex: `${cid}`, $options: 'i' } })
-            .populate('libros');
+            .populate('libros') 
 
         if (!result) {
             return res.status(404).json({ error: "Error del servidor: ID no Existe" })

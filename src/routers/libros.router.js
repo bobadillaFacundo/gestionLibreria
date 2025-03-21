@@ -20,9 +20,9 @@ router.get('/principal',authMiddleware, async (req, res) => {
         res.render('libros', {
             style: 'index.css',
             libros: result
-        });
+        }) 
     } catch (error) {
-        console.error("Error al obtener los libros:", error);
+        console.error("Error al obtener los libros:", error) 
         res.status(500).send("Error del servidor")
     }
 })
@@ -36,9 +36,9 @@ router.get('/principalGestion',authMiddleware, async (req, res) => {
         res.render('librosGestion', {
             style: 'index.css',
             libros: result
-        });
+        }) 
     } catch (error) {
-        console.error("Error al obtener los libros:", error);
+        console.error("Error al obtener los libros:", error) 
         res.status(500).send("Error del servidor")
     }
 })
@@ -47,13 +47,13 @@ router.get('/',authMiddleware, async (req, res) => {
     try {
         const result = await librosModel.find()
             .populate({ path: 'autor' })   
-            .populate({ path: 'categorias' });
+            .populate({ path: 'categorias' }) 
 
         res.json(result)
 
     } catch (error) {
-        console.error("Error al obtener los libros:", error);
-        res.status(500).send("Error del servidor");
+        console.error("Error al obtener los libros:", error) 
+        res.status(500).send("Error del servidor") 
     }
 })
 
@@ -69,7 +69,7 @@ router.get("/crud",authMiddleware, async (req, res) => {
 
 router.get("/:cid",authMiddleware,async (req, res) => {
     try {
-        const cid = String(req.params.cid); 
+        const cid = String(req.params.cid)  
         const result = await librosModel
         .find({ titulo: { $regex: `${cid}`, $options: 'i' } }) 
         if (!result) {
@@ -104,7 +104,7 @@ router.post("/", authMiddleware, (async (req, res) => {
     if (!libro.titulo || !libro.descripcion || !libro.autor || !libro.precio || !libro.cantidad || !libro.categorias) {
         return ERROR(res, `Campos Vacios`)
     }
-    const categoriasArray = Array.isArray(libro.categorias) ? libro.categorias : [libro.categorias];
+    const categoriasArray = Array.isArray(libro.categorias) ? libro.categorias : [libro.categorias] 
 
     const autor1 = await autoresModel.findOne({ nombre: new RegExp(libro.autor, 'i') })
     const categorias = await categoriasModel.find({ nombre: { $in: categoriasArray} })
@@ -119,6 +119,15 @@ router.post("/", authMiddleware, (async (req, res) => {
         cantidad: libro.cantidad,
         categorias:  categorias
     }) 
+
+    for (let i = 0  i < categorias.length  i++) {
+        const categoria = categorias[i] 
+        await categoriasModel.findByIdAndUpdate(
+            categoria._id, 
+            { $push: { libros: nuevolibro._id } }
+        )
+    }
+
     try {   
         // Guardar el libro en la base de datos
         const guardarlibro = await nuevolibro.save()

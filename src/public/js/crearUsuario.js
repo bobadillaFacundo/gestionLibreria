@@ -19,21 +19,21 @@ document.getElementById('formC').addEventListener('submit', async function (even
         
 
         if (!response.ok) {
-            const d = await response.json();
-            console.error(d.message);
-            return;
+            const d = await response.json() 
+            console.error(d.message) 
+            return 
         }
 
         // Obtener el token de la respuesta
-        const { token } = await response.json();
+        const { token } = await response.json() 
         
         console.log(token.token)
         
         // Guardar el token en el localStorage
-        localStorage.setItem('token', token);
+        localStorage.setItem('token', token) 
 
         //definir una cookies
-        document.cookie = `token=${token}; max-age=3600; path=/`    
+        document.cookie = `token=${token}  max-age=3600  path=/`    
 
         window.location.href = `/api/usuarios/libros`
 

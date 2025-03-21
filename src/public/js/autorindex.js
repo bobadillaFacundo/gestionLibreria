@@ -39,7 +39,7 @@ document.querySelectorAll('.btn-delete-libro').forEach(button => {
             await response.json()
             if (response.ok) {
                 alert("Libro eliminado con exito")
-                location.reload();
+                location.reload() 
 
             }
         } catch (error) {
@@ -61,7 +61,7 @@ document.querySelectorAll('.btn-delete-autor').forEach(button => {
 
             if (response.ok) {
                 alert("Autor eliminado con exito")
-                location.reload();
+                location.reload() 
 
             }
         } catch (error) {
@@ -93,7 +93,7 @@ document.querySelectorAll('.buttonCrearAutor').forEach(button => {
                 body: JSON.stringify(data)
             })
             alert('Autor creado con exito')
-            location.reload();
+            location.reload() 
 
         } catch (error) {
             console.error('Error:', error)

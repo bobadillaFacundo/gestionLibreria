@@ -28,7 +28,7 @@ document.querySelectorAll('.btn-createlibro').forEach(button => {
 
 document.querySelectorAll('.btn-autor').forEach(button => {
     button.addEventListener('click', async () => {
-        const email = localStorage.getItem('email');
+        const email = localStorage.getItem('email') 
         window.location.href = `/api/autores/principal/${email}`
     })
 })
