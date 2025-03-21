@@ -61,7 +61,8 @@ router.post("/", authMiddleware,(async (req, res) => {
         nombre: categoria.nombre,
     })
     try {
-        const guardarcategoria = await nuevocategoria().save()
+        
+        const guardarcategoria = await nuevocategoria.save()
         res.json( guardarcategoria)
     } catch (error) {
         console.error(`Error al insertar documento, ${error}`)

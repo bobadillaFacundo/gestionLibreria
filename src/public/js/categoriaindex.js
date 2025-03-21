@@ -36,13 +36,13 @@ document.querySelectorAll('.buttonCrearCategoria').forEach(button => {
         }
 
         try {
-            const result = await fetch('/api/categorias', {
+            await fetch('/api/categorias', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
             })
             document.getElementById('formC').reset()
-            alert('Categoria creado con exito', result)
+            alert('Categoria creado con exito')
             location.reload();
 
         } catch (error) {

@@ -11,8 +11,9 @@ router.use(express.static(__dirname + "/public"))
 
 router.get('/principal/:email', authMiddleware, async (req, res) => {
     try {
+        const c = req.params.email
         const autores = await autoresModel.find().populate('libros')
-        const usuario = await usuariosModel.findOne({email: req.params.email})
+        const usuario = await usuariosModel.findOne({email:c})
         
         // Verifica si el usuario existe antes de proceder
         if (!usuario) {

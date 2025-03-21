@@ -28,8 +28,8 @@ document.querySelectorAll('.btn-createlibro').forEach(button => {
 
 document.querySelectorAll('.btn-autor').forEach(button => {
     button.addEventListener('click', async () => {
-        window.location.href = `/api/autores/principal`
-
+        const email = localStorage.getItem('email');
+        window.location.href = `/api/autores/principal/${email}`
     })
 })
 
