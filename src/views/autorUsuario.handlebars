@@ -1,0 +1,33 @@
+<head>
+<link  type="text/css" rel="stylesheet" href="/css/index.css">
+</head>
+<header>
+    <button class="btn-volver-autores-usuario">Volver</button>
+</header>
+<body>
+      </section>
+        <!-- Sección de Libros -->
+        <section class="libros-section">
+            <div class="libros-container">
+                {{#each autor}}
+                <div class="libros-item">
+                    <label for="text">Autor:</label>
+                    <p><strong>_id:</strong> {{_id}}</p>
+                    <p><strong>nombre:</strong> {{nombre}}</p>
+                    <p><strong>edad:</strong> {{edad}}</p>
+
+                    <label for="text">Lista de libros:</label>
+                    {{#each libros}}
+                    <div class="product-item">
+                        <p><strong>Titulo:</strong> {{titulo}}</p>
+                    </div>
+                    {{/each}}
+                    <br>
+                </div>
+                {{/each}}
+            </div>
+        </section>
+
+</body>
+
+<script src="/js/autorindex.js"></script>

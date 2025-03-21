@@ -1,11 +1,21 @@
 
 
-document.querySelectorAll('.btn-volver-libro').forEach(button => {
+document.querySelectorAll('.btn-volver-autores').forEach(button => {
     button.addEventListener('click', () => {
         window.location.href = `/api/usuarios/gestion`
     })
 })
 
+document.querySelectorAll('.btn-volver-libroUsuario').forEach(button => {
+    button.addEventListener('click', () => {
+        window.location.href = `/api/usuarios/libros`
+    })
+})
+document.querySelectorAll('.btn-volver-autores-usuario').forEach(button => {
+    button.addEventListener('click', () => {
+        window.location.href = `/api/usuarios/libros`
+    })
+})
 document.querySelectorAll('.button').forEach(button => {
     button.addEventListener('click', async () => {
         const idInput = document.getElementById('IDA').value
