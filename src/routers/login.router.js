@@ -39,7 +39,8 @@ router.post("/usuarioCrea", async (req, res) => {
     const nuevoUsuario = new usuariosModel({
         email: usuario.username,
         password: bcrypt.hashSync(usuario.password, 10),
-        tipo:  "comun"
+        tipo:  "comun",
+        carrito : []
     })
     try {
         const guardarusuari = await nuevoUsuario.save()
@@ -69,9 +70,10 @@ router.post("/login", async (req, res) => {
         { id: user._id, email: user.email }, 
         process.env.JWT_SECRET, 
         { expiresIn: '1h' } // El token expira en 1 hora            
-    )
+    )    
     res.json({ token })
-    }   )
+    }   
+)
     
 
 export default router

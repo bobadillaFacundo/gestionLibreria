@@ -120,7 +120,7 @@ router.post("/", authMiddleware, (async (req, res) => {
         categorias:  categorias
     }) 
 
-    for (let i = 0  i < categorias.length  i++) {
+    for (let i = 0 ; i < categorias.length ; i++) {
         const categoria = categorias[i] 
         await categoriasModel.findByIdAndUpdate(
             categoria._id, 

@@ -88,26 +88,38 @@ document.querySelector('.carrito').addEventListener('click', async () => {
     window.location.href = `/api/carritos/principal/${usuario}` 
 })
 
-document.querySelector('.btn-compra').addEventListener('click', async () => {
-    const usuario = localStorage.getItem('email') 
-    const libro = document.getElementById('data-id').value 
-    try {
-        const respuesta = await fetch("/api/agregarCarrito", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ usuario, libro }),
-        }) 
+document.querySelectorAll('.btn-comprarLibro').forEach(button => {
+    button.addEventListener('click', async () => {
+            const usuario = localStorage.getItem('email')
+    if (!usuario) {
+        alert("No hay usuario registrado. Inicia sesión primero.")
+        return
+    }
+    
+    const libro = button.getAttribute('data-id-Libro')
+    if (!libro) {
+        alert("El libro no tiene un ID válido.")
+        return
+    }
 
-        const resultado = await respuesta.json() 
+    try {
+        const respuesta = await fetch(`/api/carritos/agregarCarrito`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ usuario: usuario, libro: libro })
+        })
+
+        const resultado = await respuesta.json()
         if (respuesta.ok) {
-            alert(`Libro agregado al carrito con éxito: ${resultado.mensaje}`) 
+            alert(` ${resultado.mensaje}`)
         } else {
-            alert(`Error: ${resultado.error}`) 
+            alert(`Error: ${resultado.error}`)
         }
     } catch (error) {
-        console.error("Error:", error) 
-        alert("Hubo un problema al procesar la petición.") 
+        console.error("Error:", error)
+        alert("Hubo un problema al procesar la petición.")
     }
+})
 })

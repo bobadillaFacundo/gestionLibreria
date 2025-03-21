@@ -9,17 +9,22 @@
 </head>
 
 <header>
-    <button class="btn-volver-carrito">Volver</button>
+    <button class="btn-volver-gestion">Volver</button>
 </header>
 
 <body>
     <!-- Contenedor principal -->
     <div class="carrito-container">
         <h1>Lista de Libros en tu Carrito</h1>
-        
+
         <!-- Sección de Libros -->
         <section class="libros-section">
-            {{#each carrito.libros}} <!-- Cambié aquí para iterar sobre los libros dentro del carrito -->
+            {{#each carrito}}
+            <div>
+                <p><strong>Cantidad de Libros:</strong> {{libros.length}}</p>
+                <p><strong>Usuario:</strong> {{usuario.email}}</p>
+            </div>
+            {{#each libros}} <!-- Cambié aquí para iterar sobre los libros dentro del carrito -->
             <div class="libros-item">
                 <label for="text">Libro:</label>
                 <p><strong>ID:</strong> {{_id}}</p>
@@ -28,7 +33,7 @@
                 <p><strong>Descripción:</strong> {{descripcion}}</p>
                 <p><strong>Precio:</strong> {{precio}}</p>
                 <p><strong>Cantidad:</strong> {{cantidad}}</p>
-                
+
                 <label for="text">Lista de Categorías:</label>
                 <div class="categorias-lista">
                     {{#each categorias}}
@@ -40,10 +45,9 @@
                 <br>
             </div>
             {{/each}}
+            {{/each}}
         </section>
     </div>
 </body>
 
 <script src="/js/carritoindex.js"></script>
-
-</html>

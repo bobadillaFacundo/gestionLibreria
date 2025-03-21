@@ -1,302 +1,252 @@
 /* ================== Estilos Generales ================== */
 body {
-    font-family: Arial, sans-serif 
-    margin: 0 
-    padding: 0 
-    display: flex 
-    flex-direction: column 
-    align-items: center 
-    background-color: #f5f5f5 
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f5f5f5;
 }
 
 /* ================== Contenedor Principal ================== */
 .main-container {
-    display: flex 
-    flex-direction: column 
-    align-items: center 
-    width: 100% 
-    padding: 20px 
-    gap: 20px 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    gap: 20px;
 }
 
 /* ================== Sección de Búsqueda ================== */
 .search-section {
-    width: 60% 
-    display: flex 
-    flex-direction: column 
-    gap: 10px 
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .search-section form {
-    display: flex 
-    gap: 10px 
+    display: flex;
+    gap: 10px;
 }
 
 .search-section input {
-    width: 70% 
-    padding: 10px 
+    width: 70%;
+    padding: 10px;
 }
 
 .search-section button {
-    padding: 10px 
-    background-color: #007bff 
-    color: white 
-    border: none 
-    border-radius: 5px 
-    cursor: pointer 
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .search-section button:hover {
-    opacity: 0.8 
+    opacity: 0.8;
 }
 
 /* ================== Sección de Botones ================== */
 .botones-container {
-    width: 60% 
-    display: flex 
-    gap: 20px 
-    justify-content: flex-start 
-    margin-top: 10px 
+    width: 60%;
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+    margin-top: 10px;
 }
 
-.botones-container button,.btn-volver-libroUsuario,.btn-volver-autores-usuario,.btn-volver-autores,.buttonCrearAutor,.buttonCrearLibro, .buttonCrearCategoria {
-    width: 30% 
-    padding: 10px 
-    background-color: #007bff 
-     
-    color: white 
-    border: none 
-    border-radius: 5px 
-    cursor: pointer 
+.botones-container button, .btn-volver-libroUsuario, .btn-volver-autores-usuario, .btn-volver-autores, .buttonCrearAutor, .buttonCrearLibro, .buttonCrearCategoria {
+    width: 30%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .botones-container button:hover {
-    opacity: 0.8 
+    opacity: 0.8;
 }
 
 /* ================== Sección de Libros ================== */
 .autores-section, .categorias-section {
-    width: 100% 
-    display: flex 
-    flex-wrap: wrap  /* Permite que pasen a la siguiente línea si no caben */
-    gap: 20px  /* Espacio entre los elementos */
-    justify-content: flex-start  /* Alinea de izquierda a derecha */
-    padding: 20px 
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    padding: 20px;
 }
 
 .autor-item, .categoria-item {
-    background-color: #f8f9fa 
-    padding: 15px 
-    border: 1px solid #ddd 
-    border-radius: 5px 
-    width: 150px  /* Ajusta el tamaño según necesites */
-    text-align: center 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) 
+    background-color: #f8f9fa;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 150px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.libros-section  {
-    width: 100% 
-    display: flex 
-    flex-wrap: wrap  /* Permite que los elementos pasen a la siguiente línea si no caben */
-    gap: 20px  /* Espacio entre los elementos */
-    justify-content: flex-start  /* Alinea los libros de izquierda a derecha */
-    padding: 20px 
+
+.libros-section {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    padding: 20px;
 }
 
 .libros-item {
-    background-color: #f8f9fa 
-    padding: 15px 
-    border: 1px solid #ddd 
-    border-radius: 5px 
-    width: 200px  /* Ajusta el tamaño de cada libro */
-    text-align: center 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) 
+    background-color: #f8f9fa;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-
 .libros-item p {
-    margin: 5px 0 
+    margin: 5px 0;
 }
 
 /* ================== Botones de Eliminación ================== */
-.btn-delete, .btn-delete-libro, .btn-delete-autor,.btn-delete-categoria {
-    margin-top: 10px 
-    padding: 10px 
-    background-color: red 
-    color: white 
-    border: none 
-    border-radius: 5px 
-    cursor: pointer 
+.btn-delete, .btn-delete-libro, .btn-delete-autor, .btn-delete-categoria {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .btn-delete:hover {
-    opacity: 0.8 
+    opacity: 0.8;
 }
 
 /* ================== Responsividad ================== */
 @media screen and (max-width: 768px) {
     .main-container, .search-section, .botones-container, .libros-section {
-        width: 100% 
+        width: 100%;
     }
 
     .libros-item {
-        width: 100% 
+        width: 100%;
     }
 }
 
 /* ================== Estilos del Header ================== */
 header {
-    width: 100% 
-    background-color: #007bff 
-    padding: 10px 
-    text-align: left 
+    width: 100%;
+    background-color: #007bff;
+    padding: 10px;
+    text-align: left;
 }
 
-.btn-volver,.btn-volver-gestion, .btn-volver-libro, .btn-volver-autor, .btn-volver-categoria {
-    background-color: #fff 
-    color: #007bff 
-    border: none 
-    padding: 8px 16px 
-    cursor: pointer 
-    font-weight: bold 
-    border-radius: 4px 
+.btn-volver, .btn-volver-gestion, .btn-volver-libro, .btn-volver-autor, .btn-volver-categoria {
+    background-color: #fff;
+    color: #007bff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
 }
 
 .btn-volver:hover {
-    background-color: #e0e0e0 
+    background-color: #e0e0e0;
 }
 
 /* ================== Sección de Formularios ================== */
 .forms-section {
-    width: 50% 
-    margin-top: 20px 
-    background-color: #ffffff 
-    padding: 20px 
-    border-radius: 8px 
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1) 
-    text-align: center 
+    width: 50%;
+    margin-top: 20px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .toggle-form {
-    font-size: 20px 
-    font-weight: bold 
-    color: #333 
-    cursor: pointer 
-    margin-bottom: 10px 
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    margin-bottom: 10px;
 }
 
 .form {
-    display: flex 
-    flex-direction: column 
-    align-items: center 
-    gap: 10px 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
 .input {
-    width: 80% 
-    padding: 8px 
-    border: 1px solid #ccc 
-    border-radius: 4px 
-    font-size: 16px 
+    width: 80%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
 }
 
 .button-primary {
-    background-color: #007bff 
-    color: white 
-    border: none 
-    padding: 10px 20px 
-    font-size: 16px 
-    cursor: pointer 
-    border-radius: 4px 
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
 }
 
 .button-primary:hover {
-    background-color: #007bff 
+    background-color: #007bff;
 }
 
-.libros-container {
-    display: flex 
-    flex-wrap: wrap  /* Permite que los elementos pasen a la siguiente línea si no caben */
-    gap: 20px  /* Espacio entre elementos */
-    justify-content: flex-start  /* Alinea los elementos al inicio */
-}
-
-.libros-item {
-    border: 1px solid #ccc 
-    padding: 15px 
-    border-radius: 8px 
-    width: 200px  /* Ajusta el tamaño según sea necesario */
-    text-align: center 
-    background-color: #f9f9f9 
-}
-
-.libros-container {
-    display: flex 
-    flex-wrap: wrap  /* Permite que los elementos pasen a la siguiente línea si no caben */
-    gap: 20px  /* Espacio entre elementos */
-    justify-content: flex-start  /* Alinea los elementos a la izquierda */
-}
-
-.libros-item {
-    border: 1px solid #ccc 
-    padding: 15px 
-    border-radius: 8px 
-    width: 250px  /* Ajusta el tamaño según sea necesario */
-    text-align: center 
-    background-color: #f9f9f9 
-}
-
-.product-item {
-    border-top: 1px solid #ddd 
-    padding-top: 10px 
-    margin-top: 10px 
-    text-align: left 
-}
-/* ================== Sección de Usuarios ================== */
 .usuarios-section {
-    width: 50% 
-    margin-top: 20px 
-    background-color: #ffffff 
-    padding: 20px 
-    border-radius: 8px 
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1) 
-    text-align: center 
+    width: 50%;
+    margin-top: 20px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-/* Ajuste de inputs para usuario y contraseña */
 .inputU, .inputC {
-    width: 80% 
-    padding: 8px 
-    border: 1px solid #ccc 
-    border-radius: 4px 
-    font-size: 16px 
+    width: 80%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
 }
 
-/* Botón para validar usuario */
+.buttonUsuario, .buttonCrearUsuario {
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
 .buttonUsuario {
-    background-color: #007bff 
-    color: white 
-    border: none 
-    padding: 10px 20px 
-    font-size: 16px 
-    cursor: pointer 
-    border-radius: 4px 
+    background-color: #007bff;
 }
 
-.buttonUsuario:hover {
-    opacity: 0.8 
+.buttonUsuario:hover, .buttonCrearUsuario:hover {
+    opacity: 0.8;
 }
 
-/* Botón para crear usuario */
 .buttonCrearUsuario {
-    background-color: #28a745 
-    color: white 
-    border: none 
-    padding: 10px 20px 
-    font-size: 16px 
-    cursor: pointer 
-    border-radius: 4px 
-}
-
-.buttonCrearUsuario:hover {
-    opacity: 0.8 
+    background-color: #28a745;
 }

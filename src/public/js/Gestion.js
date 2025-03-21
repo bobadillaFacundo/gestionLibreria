@@ -40,3 +40,10 @@ document.querySelectorAll('.btn-libro').forEach(button => {
     })
 })
 
+document.querySelectorAll('.btn-carrito').forEach(button => {
+    button.addEventListener('click', async () => {
+        window.location.href = `/api/carritos/principalGestion`
+
+    })
+})
+

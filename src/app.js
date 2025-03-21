@@ -11,7 +11,7 @@ import dotenv from 'dotenv'
 import login from "./routers/login.router.js" 
 import path from "path"
 import cookieParser from "cookie-parser"
-
+import carrito from "./routers/carritos.router.js"
 
 // Obtener el __dirname en módulos ES6
 const __filename = fileURLToPath(import.meta.url) 
@@ -52,6 +52,7 @@ app.use('/api/categorias',  categorias)
 app.use('/api/libros', libros) 
 app.use('/api/usuarios', usuarios) 
 app.use('/api/login', login) 
+app.use('/api/carritos', carrito)
 
 // Conectar a MongoDB
 mongoose.connect(process.env.MONGO_DB_URL).then(() => {

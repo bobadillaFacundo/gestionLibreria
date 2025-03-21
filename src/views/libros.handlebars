@@ -1,8 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" href="/css/index.css">
 </head>
 
 <body>
+
     <!-- Contenedor principal -->
     <div class="main-container">
         <!-- Sección de Buscar -->
@@ -39,7 +45,7 @@
                     <p>{{nombre}}</p>
                 </div>
                 {{/each}}
-                <button class="btn-compra" data-id="{{_id}}">Agregar a carrito</button>
+                <button type="button" class="btn-comprarLibro" data-id-Libro="{{_id}}">Agregar a carrito</button>
                 <br>
             </div>
             {{/each}}
@@ -47,4 +53,5 @@
     </div>
 </body>
 
+</html>
 <script src="/js/libroindex.js"></script>

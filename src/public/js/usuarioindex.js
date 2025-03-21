@@ -30,13 +30,13 @@ document.getElementById('formCAS').addEventListener('submit', async function (ev
 
         // Obtener el token de la respuesta
         const { token } = await response.json()
-
+       
         // Guardar el token en el localStorage
         localStorage.setItem('token', token)
         localStorage.setItem('email', usuario)
 
         //definir una cookies
-        document.cookie = `token=${token}  max-age=3600  path=/`
+        document.cookie = `token=${token} ; max-age=3600 ;  path=/`
         
         // Redireccionar a la nueva página
         window.location.href =`/api/usuarios/perfil/${usuario}`
