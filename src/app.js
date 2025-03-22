@@ -12,6 +12,7 @@ import login from "./routers/login.router.js"
 import path from "path"
 import cookieParser from "cookie-parser"
 import carrito from "./routers/carritos.router.js"
+import cors from "cors"
 
 // Obtener el __dirname en módulos ES6
 const __filename = fileURLToPath(import.meta.url) 
@@ -20,6 +21,12 @@ const __dirname = dirname(__filename)
 dotenv.config() 
 
 const app = express() 
+app.use(
+    cors({
+        origin: process.env.FRONTEND_URL, // Ajusta esto
+        credentials: true, // Permite cookies
+    })
+)
 
 // Configura Express para servir archivos estáticos desde la carpeta "public"
 app.use(express.static(path.join(__dirname, 'public'))) 
