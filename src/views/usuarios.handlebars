@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<head >
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Usuario</title>
@@ -9,25 +9,41 @@
     <link type="text/css" rel="stylesheet" href="/css/index.css">
 </head>
 <body>
-    <div class="container mt-5">
-        <section class="usuarios-section text-center">
-            <h2 class="toggle-form" data-target="formU">Validar Usuario</h2>
-            <form id="formCAS" class="form" method="post" action="/api/usuarios/perfil">
-                <div class="mb-3">
-                    <input type="text" id="U" class="form-control inputU" placeholder="Usuario" name="usuario">
-                </div>
-                <div class="mb-3">
-                    <input type="password" id="Cu" class="form-control inputC" placeholder="Contraseña" name="password">
-                </div>
-                <button type="submit" class="btn btn-primary buttonUsuario">Entrar</button>
-            </form>
-        </section>
-        <br>
-        <section class="text-center">
-            <button type="button" class="btn btn-success buttonCrearUsuario">Crear</button>
-        </section>
+    <div class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 100vh;">
+        <!-- Contenedor del formulario centrado -->
+        <div class="row w-100 justify-content-center">
+            <div class="col-md-4 col-sm-6">
+                <section class="usuarios-section mb-4 text-center">
+                    <h2 class="toggle-form" data-target="formU">Validar Usuario</h2>
+                    <form id="formCAS" class="form" method="post" action="/api/usuarios/perfil">
+                        <!-- Campo Usuario -->
+                        <div class="mb-3">
+                            <label for="U" class="form-label">Usuario</label>
+                            <input type="text" id="U" class="form-control inputU" placeholder="Usuario" name="usuario" required aria-describedby="usuarioHelp">
+                            <small id="usuarioHelp" class="form-text text-muted">Ingresa tu nombre de usuario.</small>
+                        </div>
+
+                        <!-- Campo Contraseña -->
+                        <div class="mb-3">
+                            <label for="Cu" class="form-label">Contraseña</label>
+                            <input type="password" id="Cu" class="form-control inputC" placeholder="Contraseña" name="password" required aria-describedby="passwordHelp">
+                            <small id="passwordHelp" class="form-text text-muted">Introduce tu contraseña segura.</small>
+                        </div>
+
+                        <!-- Botón de inicio -->
+                        <button type="submit" class="btn btn-primary buttonUsuario w-100">Entrar</button>
+                    </form>
+                </section>
+            </div>
+        </div>
+
+        <!-- Botón Crear usuario -->
+        <div class="w-100 text-center mt-4">
+            <button type="button" class="btn btn-success buttonCrearUsuario w-auto">Crear</button>
+        </div>
     </div>
     
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/usuarioindex.js"></script>
 </body>
