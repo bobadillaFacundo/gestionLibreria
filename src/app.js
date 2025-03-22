@@ -13,6 +13,8 @@ import path from "path"
 import cookieParser from "cookie-parser"
 import carrito from "./routers/carritos.router.js"
 import cors from "cors"
+import compras from "./routers/compras.router.js"
+
 
 // Obtener el __dirname en módulos ES6
 const __filename = fileURLToPath(import.meta.url) 
@@ -60,6 +62,8 @@ app.use('/api/libros', libros)
 app.use('/api/usuarios', usuarios) 
 app.use('/api/login', login) 
 app.use('/api/carritos', carrito)
+app.use('/api/compras', compras)
+
 
 // Conectar a MongoDB
 mongoose.connect(process.env.MONGO_DB_URL).then(() => {

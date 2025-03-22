@@ -53,3 +53,9 @@ document.querySelectorAll('.btn-sesion').forEach(button => {
 
     })
 })
+
+document.querySelectorAll('.btn-compras').forEach(button => {
+    button.addEventListener('click', async () => {
+        window.location.href = `/api/compras/principal`
+    })
+})
