@@ -26,7 +26,6 @@ router.get('/principal',authMiddleware, async (req, res) => {
             style: 'index.css',
             compras: result
         })   
-        console.log(result)
         
     } catch (error) {   
         console.error("Error al obtener las compras:", error) 
@@ -66,12 +65,15 @@ router.post('/registrarCompra',authMiddleware, async (req, res) => {
             const guardador = await compra.save()
             usuario.compras.push(guardador._id)
             
-            carrito.libros.forEach(async libro => {
+            for (const libro of carrito.libros) {
+                console.log(`Actualizando libro con ID: ${libro._id}`);
+                
+                // Resta uno a la cantidad del libro
                 await librosMyModel.findByIdAndUpdate(
-                libro._id, 
-                { cantidad : libro.cantidad - 1 } )
-            })              
-            
+                    libro._id,
+                    { $inc: { cantidad: -1 } }  // Usamos $inc para incrementar o decrementar el valor
+                )
+            }
             
             usuario.save()
             carrito.libros = []

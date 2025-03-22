@@ -272,4 +272,58 @@ header {
     background-color: #28a745;
 }
 
+/* En tu archivo /css/index.css */
+.libros-section {
+    max-height: 600px;  /* Ajusta la altura según lo necesites */
+    overflow-y: auto;   /* Habilita el desplazamiento vertical */
+}
+ /* Aseguramos que el contenedor principal ocupe toda la pantalla y esté centrado */
+ body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+}
 
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.usuarios-section {
+    width: 100%;
+    max-width: 500px; /* Tamaño máximo de la sección */
+    padding: 40px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.buttonUsuario {
+    width: 100%;
+}
+
+/* Estilo para el botón Crear usuario */
+.buttonCrearUsuario {
+    width: auto;
+    margin-top: 20px;
+}
+
+/* Para el formulario */
+.form-label {
+    font-weight: bold;
+}
+
+.inputU, .inputC {
+    width: 100%;
+}
+
+/* Ajuste en el tamaño de los inputs */
+.form-control {
+    padding: 15px;
+}
