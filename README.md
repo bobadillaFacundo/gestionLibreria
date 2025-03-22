@@ -20,9 +20,14 @@ Despues habrir en el puerto http://localhost:8000/api/login/principal
 Los datos se persisten en la bdd MongoDB
 
 Otra forma:
+
 npm install
+
 node start
+
 Es necesario subir las credenciales en el .env
 
+
 Imagenes del prototipo
+
 ![alt text](<Captura de pantalla 2025-03-22 041357.png>) ![alt text](<Captura de pantalla 2025-03-22 041340.png>) ![alt text](<Captura de pantalla 2025-03-22 041324.png>) ![alt text](<Captura de pantalla 2025-03-22 041310.png>)
