@@ -60,3 +60,15 @@ document.querySelectorAll('.btn-comprarLibro').forEach(button => {
 })
 
 
+document.querySelectorAll('.buscarLibroUsuario').forEach(button => {
+    button.addEventListener('click', async () => {
+        const idInput = document.getElementById('IDLFINALUSUARIO').value 
+        console.log(idInput)        
+        if (idInput) {
+            window.location.href = `/api/libros/usuario/${idInput}` 
+        } else {
+            alert('Error, ingrese el nombre del libro') 
+        }
+    
+    })})
+    
