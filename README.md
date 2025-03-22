@@ -1,7 +1,9 @@
 Tecnologias:
 Node.js
+express
 Handlebars
 MongoDB
+Es necesario conectarce a la bdd mongo y crear el usuario admin. En la carpeta model esta el template, en tipo poner "admin". Cuando te registras desde la pagina te crea como un usuario comun.
 
 Construcción de la imagen Docker:
 
@@ -13,15 +15,14 @@ Ejecución del contenedor:
 Una vez que la imagen se haya construido correctamente, puedes ejecutar un contenedor con el siguiente comando
 
       docker-compose up
-Despues habrir en el puerto http://localhost:8000/api/libros/principal
+Despues habrir en el puerto http://localhost:8000/api/login/principal
 
 Los datos se persisten en la bdd MongoDB
 
+Otra forma:
+npm install
+node start
+Es necesario subir las credenciales en el .env
 
-
-Imagenes:
-![Captura de pantalla 2025-03-17 012117](https://github.com/user-attachments/assets/e6488980-58a8-45f2-8b74-0828bd99d980)
-
-![Captura de pantalla 2025-03-17 012136](https://github.com/user-attachments/assets/5edd76ee-1ff7-4d46-8ce0-7e89e6a241e8)
-
-![Captura de pantalla 2025-03-17 012155](https://github.com/user-attachments/assets/1c1ecda5-c801-4ab4-973a-c28c2e6014d1)
+Imagenes del prototipo
+![alt text](<Captura de pantalla 2025-03-22 041357.png>) ![alt text](<Captura de pantalla 2025-03-22 041340.png>) ![alt text](<Captura de pantalla 2025-03-22 041324.png>) ![alt text](<Captura de pantalla 2025-03-22 041310.png>)
