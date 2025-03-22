@@ -3,6 +3,8 @@ Node.js
 express
 Handlebars
 MongoDB
+boostrap
+
 Es necesario conectarce a la bdd mongo y crear el usuario admin. En la carpeta model esta el template, en tipo poner "admin". Cuando te registras desde la pagina te crea como un usuario comun.
 
 La apliccaion corre en este link: https://a20df83b-dd20-4cbc-b6bb-dfadd6804338-00-1u8iup70oh2nq.riker.replit.dev/api/login/principal
