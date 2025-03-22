@@ -16,17 +16,8 @@ document.querySelectorAll('.btn-volver-autores-usuario').forEach(button => {
         window.location.href = `/api/usuarios/libros`
     })
 })
-document.querySelectorAll('.button').forEach(button => {
-    button.addEventListener('click', async () => {
-        const idInput = document.getElementById('IDA').value
 
-        if (idInput) {
-            window.location.href = `/api/autores/${idInput}`
-        } else {
-            alert('Error, nombre de autor')
-        }
-    })
-})
+
 
 // Asignar eventos a loss botones de eliminar
 document.querySelectorAll('.btn-delete-libro').forEach(button => {
@@ -71,33 +62,67 @@ document.querySelectorAll('.btn-delete-autor').forEach(button => {
     }
     )
 })
+
 document.querySelectorAll('.btn-volver-libro').forEach(button => {
+    console.log(button); // Verifica si los botones se encuentran correctamente
     button.addEventListener('click', () => {
         window.location.href = `/api/usuarios/gestion`
     })
 })
 
-document.querySelectorAll('.buttonCrearAutor').forEach(button => {
-    button.addEventListener('click', async () => {
 
-        event.preventDefault()
+document.querySelectorAll('.buttonCrearAutor').forEach(button => {
+    button.addEventListener('click', async (event) => {
+        event.preventDefault() // Se previene el comportamiento por defecto
+
         const data = {
             nombre: document.getElementById('Nombre').value,
             edad: document.getElementById('Edad').value
-        }
+        };
 
         try {
-             await fetch('/api/autores', {
+            const response = await fetch('/api/autores', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
-            })
-            alert('Autor creado con exito')
-            location.reload() 
+            });
 
+            const result = await response.json()
+            
+            if (response.ok) {
+                alert("Autor creado con exito")
+                document.getElementById('formCA').reset()
+            } else {
+                alert(result.message)
+            }
+            
         } catch (error) {
-            console.error('Error:', error)
+            console.log('Error:', error)
             alert('Error al crear el autor')
         }
     })
+})
+
+
+document.querySelectorAll('.btn-primary-buscar').forEach(button => {
+    button.addEventListener('click', async () => {
+        const idInput = document.getElementById('IDA').value
+
+        if (idInput) {
+            window.location.href = `/api/autores/${idInput}`
+        } else {
+            alert('Error, nombre de autor')
+        }
+    })
+})
+
+document.querySelector('.buscarLibroUsuario').addEventListener('click', async () => {
+    const idInput = document.getElementById('IDA').value 
+    console.log("mermelada")
+    
+    if (idInput) {
+        window.location.href = `/api/autores/usuario/${idInput}` 
+    } else {
+        alert('Error, ingrese el nombre del autor') 
+    }
 })

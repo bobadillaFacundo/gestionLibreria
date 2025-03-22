@@ -59,7 +59,13 @@ body {
     margin-top: 10px;
 }
 
-.botones-container button, .btn-volver-libroUsuario, .btn-volver-autores-usuario, .btn-volver-autores, .buttonCrearAutor, .buttonCrearLibro, .buttonCrearCategoria {
+.botones-container button, 
+.btn-volver-libroUsuario, 
+.btn-volver-autores-usuario, 
+.btn-volver-autores, 
+.buttonCrearAutor, 
+.buttonCrearLibro, 
+.buttonCrearCategoria {
     width: 30%;
     padding: 10px;
     background-color: #007bff;
@@ -74,7 +80,8 @@ body {
 }
 
 /* ================== Sección de Libros ================== */
-.autores-section, .categorias-section {
+.autores-section, 
+.categorias-section {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -83,7 +90,8 @@ body {
     padding: 20px;
 }
 
-.autor-item, .categoria-item {
+.autor-item, 
+.categoria-item {
     background-color: #f8f9fa;
     padding: 15px;
     border: 1px solid #ddd;
@@ -117,7 +125,10 @@ body {
 }
 
 /* ================== Botones de Eliminación ================== */
-.btn-delete, .btn-delete-libro, .btn-delete-autor, .btn-delete-categoria {
+.btn-delete, 
+.btn-delete-libro, 
+.btn-delete-autor, 
+.btn-delete-categoria {
     margin-top: 10px;
     padding: 10px;
     background-color: red;
@@ -133,7 +144,10 @@ body {
 
 /* ================== Responsividad ================== */
 @media screen and (max-width: 768px) {
-    .main-container, .search-section, .botones-container, .libros-section {
+    .main-container, 
+    .search-section, 
+    .botones-container, 
+    .libros-section {
         width: 100%;
     }
 
@@ -150,7 +164,11 @@ header {
     text-align: left;
 }
 
-.btn-volver, .btn-volver-gestion, .btn-volver-libro, .btn-volver-autor, .btn-volver-categoria {
+.btn-volver, 
+.btn-volver-gestion, 
+.btn-volver-libro, 
+.btn-volver-autor, 
+.btn-volver-categoria {
     background-color: #fff;
     color: #007bff;
     border: none;
@@ -222,7 +240,8 @@ header {
     text-align: center;
 }
 
-.inputU, .inputC {
+.inputU, 
+.inputC {
     width: 80%;
     padding: 8px;
     border: 1px solid #ccc;
@@ -230,7 +249,8 @@ header {
     font-size: 16px;
 }
 
-.buttonUsuario, .buttonCrearUsuario {
+.buttonUsuario, 
+.buttonCrearUsuario {
     color: white;
     border: none;
     padding: 10px 20px;
@@ -243,7 +263,8 @@ header {
     background-color: #007bff;
 }
 
-.buttonUsuario:hover, .buttonCrearUsuario:hover {
+.buttonUsuario:hover, 
+.buttonCrearUsuario:hover {
     opacity: 0.8;
 }
 

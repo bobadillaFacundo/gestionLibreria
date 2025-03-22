@@ -1,53 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head > 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="/css/index.css">
 </head>
 
-<header>
-    <button class="btn-volver-gestion">Volver</button>
+<header class="container mt-3">
+    <button class="btn btn-secondary btn-volver-gestion">Volver</button>
 </header>
 
 <body>
     <!-- Contenedor principal -->
-    <div class="carrito-container">
-        <h1>Lista de Libros en tu Carrito</h1>
+    <div class="container mt-4">
+        <h1 class="text-center">Lista de Libros en tu Carrito</h1>
 
         <!-- Sección de Libros -->
         <section class="libros-section">
             {{#each carrito}}
-            <div>
+            <div class="mb-4">
                 <p><strong>Cantidad de Libros:</strong> {{libros.length}}</p>
                 <p><strong>Usuario:</strong> {{usuario.email}}</p>
             </div>
-            {{#each libros}} <!-- Cambié aquí para iterar sobre los libros dentro del carrito -->
-            <div class="libros-item">
-                <label for="text">Libro:</label>
-                <p><strong>ID:</strong> {{_id}}</p>
-                <p><strong>Autor:</strong> {{autor.nombre}}</p>
-                <p><strong>Título:</strong> {{titulo}}</p>
-                <p><strong>Descripción:</strong> {{descripcion}}</p>
-                <p><strong>Precio:</strong> {{precio}}</p>
-                <p><strong>Cantidad:</strong> {{cantidad}}</p>
+            {{#each libros}}
+            <div class="card shadow-sm mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Libro</h5>
+                    <p><strong>ID:</strong> {{_id}}</p>
+                    <p><strong>Autor:</strong> {{autor.nombre}}</p>
+                    <p><strong>Título:</strong> {{titulo}}</p>
+                    <p><strong>Descripción:</strong> {{descripcion}}</p>
+                    <p><strong>Precio:</strong> {{precio}}</p>
+                    <p><strong>Cantidad:</strong> {{cantidad}}</p>
 
-                <label for="text">Lista de Categorías:</label>
-                <div class="categorias-lista">
-                    {{#each categorias}}
-                    <div class="product-item">
-                        <p>{{nombre}}</p>
+                    <h6>Lista de Categorías:</h6>
+                    <div class="list-group">
+                        {{#each categorias}}
+                        <div class="list-group-item">
+                            <p>{{nombre}}</p>
+                        </div>
+                        {{/each}}
                     </div>
-                    {{/each}}
                 </div>
-                <br>
             </div>
             {{/each}}
             {{/each}}
         </section>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/carritoindex.js"></script>
 </body>
 
-<script src="/js/carritoindex.js"></script>
+</html>

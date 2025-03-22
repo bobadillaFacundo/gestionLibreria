@@ -4,7 +4,7 @@
 </head>
 
 <header class="container mt-3">
-    <button class="btn btn-primary btn-volver-libro">Volver</button>
+    <button class="btn btn-primary btn-volver-gestion">Volver</button>
 </header>
 
 <body class="container mt-4">
@@ -27,6 +27,7 @@
                         <li class="list-group-item">{{nombre}}</li>
                         {{/each}}
                     </ul>
+                    <button class="btn btn-danger mt-3 btn-delete-libro" data-id-libro="{{_id}}">Eliminar Libro</button>
                 </div>
             </div>
             {{/each}}

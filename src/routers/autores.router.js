@@ -75,6 +75,31 @@ router.get("/:cid", authMiddleware, async (req, res) => {
     }
 
 })
+
+router.get("/usuario/:cid", authMiddleware, async (req, res) => {
+    try {
+        const cid = String(req.params.cid) 
+        const result = await autoresModel
+            .find({ nombre: { $regex: `${cid}`, $options: 'i' } })
+            .populate('libros') 
+
+        if (!result) {
+            return res.status(404).json({ error: "Error del servidor: ID no Existe" })
+        }
+
+        
+        return res.render('autorUsuario', {
+            style: 'index.css',
+            autor: result
+        })
+
+    } catch (error) {
+        return res.status().json({ error: "Error del servidor: ${error.message} " })
+    }
+
+})
+
+
 router.post("/", authMiddleware, (async (req, res) => {
     const autor = req.body
     if (!autor.nombre || !autor.edad) {
@@ -87,7 +112,7 @@ router.post("/", authMiddleware, (async (req, res) => {
     })
     try {
         const guardarAutor = await nuevoAutor.save()
-        res.json(guardarAutor)
+        res.json({ message: 'Autor creado con exito', autor: guardarAutor })
     } catch (error) {
         console.error(`Error al insertar documento, ${error}`)
         ERROR(res, `Error del servidor: ${error}`)

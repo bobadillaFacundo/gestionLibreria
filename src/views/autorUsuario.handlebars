@@ -1,33 +1,45 @@
 <head>
-<link  type="text/css" rel="stylesheet" href="/css/index.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/css/index.css">
 </head>
-<header>
-    <button class="btn-volver-autores-usuario">Volver</button>
+
+<header class="container mt-3">
+    <button class="btn btn-secondary btn-volver-autores-usuario">Volver</button>
 </header>
+
 <body>
-      </section>
+    <!-- Contenedor principal -->
+    <div class="container mt-4">
+        <h1 class="text-center">Información de Autor</h1>
+
         <!-- Sección de Libros -->
         <section class="libros-section">
-            <div class="libros-container">
+            <div class="row">
                 {{#each autor}}
-                <div class="libros-item">
-                    <label for="text">Autor:</label>
-                    <p><strong>_id:</strong> {{_id}}</p>
-                    <p><strong>nombre:</strong> {{nombre}}</p>
-                    <p><strong>edad:</strong> {{edad}}</p>
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Autor</h5>
+                            <p><strong>_id:</strong> {{_id}}</p>
+                            <p><strong>Nombre:</strong> {{nombre}}</p>
+                            <p><strong>Edad:</strong> {{edad}}</p>
 
-                    <label for="text">Lista de libros:</label>
-                    {{#each libros}}
-                    <div class="product-item">
-                        <p><strong>Titulo:</strong> {{titulo}}</p>
+                            <h6>Lista de Libros:</h6>
+                            {{#each libros}}
+                            <div class="list-group">
+                                <div class="list-group-item">
+                                    <p><strong>Título:</strong> {{titulo}}</p>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
                     </div>
-                    {{/each}}
-                    <br>
                 </div>
                 {{/each}}
             </div>
         </section>
+    </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/autorindex.js"></script>
 </body>
-
-<script src="/js/autorindex.js"></script>

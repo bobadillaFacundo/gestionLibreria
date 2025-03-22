@@ -67,11 +67,38 @@ router.get("/crud",authMiddleware, async (req, res) => {
     })
 })
 
+router.get("/usuario/:cid",authMiddleware,async (req, res) => {
+    try {
+        const cid = String(req.params.cid)  
+        const result = await librosModel
+        .find({ titulo: { $regex: `${cid}`, $options: 'i' } })
+        .populate({ path: 'autor' })
+        .populate({ path: 'categorias' })
+
+
+        if (!result) {
+            return ERROR(res, `Error del servidor: ID no Existe`)
+        }
+        
+        return res.render('libro', {
+            style: 'index.css',
+            libros: result
+        })
+
+    } catch (error) {
+        ERROR(res, `Error del servidor: ${error}`)
+    }
+})
+
+
 router.get("/:cid",authMiddleware,async (req, res) => {
     try {
         const cid = String(req.params.cid)  
         const result = await librosModel
-        .find({ titulo: { $regex: `${cid}`, $options: 'i' } }) 
+        .find({ titulo: { $regex: `${cid}`, $options: 'i' } }).
+        populate({ path: 'autor' })
+        .populate({ path: 'categorias' })
+
         if (!result) {
             return ERROR(res, `Error del servidor: ID no Existe`)
         }

@@ -1,28 +1,34 @@
-<head>
+<!DOCTYPE html>
+<html lang="es">
+<head >
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Usuario</title>
-    <base href="/"> 
-    <link  type="text/css" rel="stylesheet" href="/css/index.css">
+    <base href="/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="/css/index.css">
 </head>
 <body>
-    <!-- Contenedor principal -->
-    <div class="main-container">
-
-              <section class="usuarios-section">
-               <h2 class="toggle-form" data-target="formU">Validar Usuario</h2>
-                <form id="formCAS" class="form" method="post" action="/api/usuarios/perfil">
-                    <input type="text" id="U" class="inputU" placeholder="Usurio" name="usuario">
-                    <input type="text" id="Cu" class="inputC" placeholder="contraseña" name="password">
-                    <button type="submit" class="buttonUsuario">Entrar</button>
-                </form>
+    <div class="container mt-5">
+        <section class="usuarios-section text-center">
+            <h2 class="toggle-form" data-target="formU">Validar Usuario</h2>
+            <form id="formCAS" class="form" method="post" action="/api/usuarios/perfil">
+                <div class="mb-3">
+                    <input type="text" id="U" class="form-control inputU" placeholder="Usuario" name="usuario">
+                </div>
+                <div class="mb-3">
+                    <input type="password" id="Cu" class="form-control inputC" placeholder="Contraseña" name="password">
+                </div>
+                <button type="submit" class="btn btn-primary buttonUsuario">Entrar</button>
+            </form>
         </section>
         <br>
-        <section>
-                <button type="button" class="buttonCrearUsuario">Crear</button>
+        <section class="text-center">
+            <button type="button" class="btn btn-success buttonCrearUsuario">Crear</button>
         </section>
     </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/usuarioindex.js"></script>
 </body>
-
-<script src="/js/usuarioindex.js"></script>
-
+</html>
