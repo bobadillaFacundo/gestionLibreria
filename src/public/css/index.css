@@ -3,10 +3,55 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     background-color: #f5f5f5;
+}
+
+/* ================== Estilos Específicos para la página de Login ================== */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ocupa toda la pantalla */
+    background-color: #f8f9fa;
+}
+
+.login-page .usuarios-section {
+    width: 100%;
+    max-width: 600px;  /* Tamaño máximo */
+    padding: 40px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.login-page .inputU, .login-page .inputC {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.login-page .buttonUsuario {
+    width: 100%;
+    padding: 10px;
+}
+
+.login-page .buttonCrearUsuario {
+    width: auto; 
+    margin-top: 20px;
+    padding: 10px 20px;
+}
+
+.login-page .mb-4 {
+    margin-bottom: 20px;
+}
+
+.login-page .text-muted {
+    font-size: 14px;
+}
+
+/* ================== Estilos Generales de la Aplicación (que no afectan al login) ================== */
+body {
+    background-color: #fff; /* Restablecer color de fondo en el resto de la app */
 }
 
 /* ================== Contenedor Principal ================== */
@@ -38,7 +83,7 @@ body {
 }
 
 .search-section button {
-    padding: 10px;
+    padding: 8px 16px;  /* Reducido padding */
     background-color: #007bff;
     color: white;
     border: none;
@@ -66,8 +111,8 @@ body {
 .buttonCrearAutor, 
 .buttonCrearLibro, 
 .buttonCrearCategoria {
-    width: 30%;
-    padding: 10px;
+    width: auto;  /* Ajustado a auto */
+    padding: 8px 16px;  /* Reducido padding */
     background-color: #007bff;
     color: white;
     border: none;
@@ -130,7 +175,7 @@ body {
 .btn-delete-autor, 
 .btn-delete-categoria {
     margin-top: 10px;
-    padding: 10px;
+    padding: 8px 16px;  /* Reducido padding */
     background-color: red;
     color: white;
     border: none;
@@ -220,7 +265,7 @@ header {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 8px 16px;  /* Reducido padding */
     font-size: 16px;
     cursor: pointer;
     border-radius: 4px;
@@ -253,7 +298,7 @@ header {
 .buttonCrearUsuario {
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 8px 16px;  /* Reducido padding */
     font-size: 16px;
     cursor: pointer;
     border-radius: 4px;
@@ -272,58 +317,48 @@ header {
     background-color: #28a745;
 }
 
-/* En tu archivo /css/index.css */
+/* Ajustes de altura y desplazamiento para la lista de libros */
 .libros-section {
     max-height: 600px;  /* Ajusta la altura según lo necesites */
     overflow-y: auto;   /* Habilita el desplazamiento vertical */
 }
- /* Aseguramos que el contenedor principal ocupe toda la pantalla y esté centrado */
- body, html {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f8f9fa;
+/* ================== Estilos Específicos para la página de Login ================== */
+.login-page .buttonUsuario,
+.login-page .buttonCrearUsuario {
+    width: auto; /* Permite que el tamaño se ajuste al contenido */
+    padding: 10px 20px; /* Agrega padding para que se vean más proporcionados */
+    font-size: 16px;
+    border-radius: 4px;
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
+.login-page .buttonUsuario {
+    background-color: #007bff;
+    margin-bottom: 20px; /* Espacio inferior entre los botones */
 }
 
-.usuarios-section {
-    width: 100%;
-    max-width: 500px; /* Tamaño máximo de la sección */
-    padding: 40px;
-    border-radius: 8px;
-    background-color: white;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.login-page .buttonUsuario:hover {
+    opacity: 0.8;
 }
 
-.buttonUsuario {
-    width: 100%;
-}
-
-/* Estilo para el botón Crear usuario */
-.buttonCrearUsuario {
-    width: auto;
+.login-page .buttonCrearUsuario {
+    background-color: #28a745;
     margin-top: 20px;
 }
 
-/* Para el formulario */
-.form-label {
-    font-weight: bold;
+.login-page .buttonCrearUsuario:hover {
+    opacity: 0.8;
 }
 
-.inputU, .inputC {
-    width: 100%;
+/* ================== Ajuste del Botón Buscar ================== */
+.btn-volver-autores {
+    width: auto; /* Permite que el tamaño se ajuste al contenido */
+    padding: 8px 16px; /* Hace que el botón sea más pequeño */
+    font-size: 16px; /* Tamaño de fuente más pequeño */
+    border-radius: 4px;
+    background-color: #6c757d; /* Mantén el color original */
+    color: white;
 }
 
-/* Ajuste en el tamaño de los inputs */
-.form-control {
-    padding: 15px;
+.btn-volver-autores:hover {
+    opacity: 0.8; /* Efecto hover */
 }
