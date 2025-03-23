@@ -2,7 +2,13 @@
 
 document.querySelectorAll('.btn-volver-autores').forEach(button => {
     button.addEventListener('click', () => {
-        window.location.href = `/api/usuarios/gestion`
+        const email = localStorage.getItem('email')
+        window.location.href = `/api/autores/principal/${email}`
+    })
+})
+document.querySelectorAll('.Usuario').forEach(button => {
+    button.addEventListener('click', () => {
+        window.location.href = `/api/usuarios/libros`
     })
 })
 
@@ -13,10 +19,15 @@ document.querySelectorAll('.btn-volver-libroUsuario').forEach(button => {
 })
 document.querySelectorAll('.btn-volver-autores-usuario').forEach(button => {
     button.addEventListener('click', () => {
-        window.location.href = `/api/usuarios/libros`
+        const email = localStorage.getItem('email')
+        window.location.href = `/api/autores/principal/${email}`
     })
 })
-
+document.querySelectorAll('.btn-volver-gestion').forEach(button => {
+    button.addEventListener('click', () => {
+        window.location.href = `/api/usuarios/gestion`
+    })
+})
 
 
 // Asignar eventos a loss botones de eliminar
@@ -107,9 +118,9 @@ document.querySelectorAll('.buttonCrearAutor').forEach(button => {
 document.querySelectorAll('.btn-primary-buscar').forEach(button => {
     button.addEventListener('click', async () => {
         const idInput = document.getElementById('IDA').value
-
+        const usuarioInput = localStorage.getItem('email')
         if (idInput) {
-            window.location.href = `/api/autores/${idInput}`
+            window.location.href = `/api/autores/autor/${idInput}/${usuarioInput}`
         } else {
             alert('Error, nombre de autor')
         }
@@ -117,8 +128,7 @@ document.querySelectorAll('.btn-primary-buscar').forEach(button => {
 })
 
 document.querySelector('.buscarLibroUsuario').addEventListener('click', async () => {
-    const idInput = document.getElementById('IDA').value 
-    console.log("mermelada")
+    const idInput = document.getElementById('IDAA').value 
     
     if (idInput) {
         window.location.href = `/api/autores/usuario/${idInput}` 

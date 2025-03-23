@@ -72,3 +72,9 @@ document.querySelectorAll('.buscarLibroUsuario').forEach(button => {
     
     })})
     
+    document.querySelector('.btn-volver-libros').addEventListener('click', async () => {
+  
+        window.location.href = `/api/usuarios/libros` 
+    
+    })
+    

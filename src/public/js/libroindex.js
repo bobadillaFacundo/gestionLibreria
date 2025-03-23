@@ -1,5 +1,5 @@
 
-document.querySelectorAll('.btn-volver-libro').forEach(button => {
+document.querySelectorAll('.btn-volver-libros').forEach(button => {
     button.addEventListener('click', () => {
         window.location.href = `/api/usuarios/libros`
     })
@@ -71,11 +71,4 @@ document.querySelectorAll('.btn-createlibro').forEach(button => {
     })
 })
 
-
-document.querySelectorAll('.btn-volver-gestion').forEach(button => {
-    button.addEventListener('click', async () => {
-        window.location.href = `/api/usuarios/gestion`
-
-    })
-})
 

@@ -3,7 +3,8 @@ import { obtenerTodosLosDocumentos, deleteDocumento, ERROR } from "../utils/util
 import autoresModel from '../models/autores.js'
 import __dirname from "../utils/utils.js"
 import authMiddleware from '../middlewares/authMiddleware.js'
-import usuariosModel from '../models/usuarios.js'
+import usuariosModel2 from '../models/usuarios.js'
+
 
 const router = express.Router()
 router.use(express.static(__dirname + "/public"))
@@ -13,7 +14,7 @@ router.get('/principal/:email', authMiddleware, async (req, res) => {
     try {
         const c = req.params.email
         const autores = await autoresModel.find().populate('libros')
-        const usuario = await usuariosModel.findOne({email:c})
+        const usuario = await usuariosModel2.findOne({email:c})
         
         // Verifica si el usuario existe antes de proceder
         if (!usuario) {
@@ -44,7 +45,7 @@ router.get("/crud", authMiddleware, async (req, res) => {
     })
 })
 
-
+/*
 router.get('/', authMiddleware, async (req, res) => {
     await obtenerTodosLosDocumentos(autoresModel).then(result => {
         res.json(result)
@@ -52,33 +53,51 @@ router.get('/', authMiddleware, async (req, res) => {
         ERROR(res, `Error del servidor: ${error}`)
     })
 })
-
-
-router.get("/:cid", authMiddleware, async (req, res) => {
+*/
+router.get("/autor/:cid/:user", authMiddleware, async (req, res) => {
     try {
-        const cid = String(req.params.cid) 
-        const result = await autoresModel
-            .find({ nombre: { $regex: `${cid}`, $options: 'i' } })
-            .populate('libros') 
+        
+        const datos = req.params.user
+        const id = req.params.cid
+        const usuario = await usuariosModel2.findOne({ email: datos })
 
-        if (!result) {
+        if (!usuario) {
             return res.status(404).json({ error: "Error del servidor: ID no Existe" })
         }
 
-        return res.render('autor', {
-            style: 'index.css',
-            autor: result
-        })
+       
+        const result = await autoresModel
+            .find({ nombre: { $regex: `${id}`, $options: 'i' } })
+            .populate('libros')         
+        
+        if (!result) {
+            return res.status(404).json({ error: "Error del servidor: ID no Existe" })
+        }
+        
+        if (usuario.tipo === 'comun') {
+
+            res.render('autoreUsuario', {
+                style: 'index.css',
+                autor: result
+            })
+        } else {
+
+            res.render('autor', {
+                style: 'index.css',
+                autor: result
+            })
+        }
 
     } catch (error) {
-        return res.status().json({ error: "Error del servidor: ${error.message} " })
+        return res.status(500).json({ error: `Error del servidor: ${error.message} ` })
     }
 
 })
 
+
 router.get("/usuario/:cid", authMiddleware, async (req, res) => {
     try {
-        const cid = String(req.params.cid) 
+        const cid = req.params.cid 
         const result = await autoresModel
             .find({ nombre: { $regex: `${cid}`, $options: 'i' } })
             .populate('libros') 
@@ -86,7 +105,6 @@ router.get("/usuario/:cid", authMiddleware, async (req, res) => {
         if (!result) {
             return res.status(404).json({ error: "Error del servidor: ID no Existe" })
         }
-
         
         return res.render('autorUsuario', {
             style: 'index.css',
