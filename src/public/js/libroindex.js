@@ -1,7 +1,8 @@
 
 document.querySelectorAll('.btn-volver-libros').forEach(button => {
     button.addEventListener('click', () => {
-        window.location.href = `/api/usuarios/libros`
+        const id = localStorage.getItem('email')
+        window.location.href = `/api/autores/principal/${id}`
     })
 })
 

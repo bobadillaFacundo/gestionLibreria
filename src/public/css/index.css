@@ -362,3 +362,18 @@ header {
 .btn-volver-autores:hover {
     opacity: 0.8; /* Efecto hover */
 }
+
+/* ================== Estilo para los botones con la clase btn btn-secondary ================== */
+.btn.btn-secondary.m-3 {
+    padding: 8px 16px;  /* Ajustar el tamaño del padding */
+    background-color: #007bff;  /* Color de fondo azul */
+    color: white;  /* Color de texto blanco */
+    border: none;  /* Sin borde */
+    border-radius: 4px;  /* Bordes redondeados */
+    cursor: pointer;  /* Cambia el cursor al pasar sobre el botón */
+    font-size: 16px;  /* Tamaño de fuente */
+}
+
+.btn.btn-secondary.m-3:hover {
+    opacity: 0.8;  /* Efecto de opacidad en hover */
+}

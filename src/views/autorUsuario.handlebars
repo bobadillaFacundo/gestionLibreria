@@ -29,9 +29,14 @@
                             <div class="list-group">
                                 <div class="list-group-item">
                                     <p><strong>Título:</strong> {{titulo}}</p>
+                                    <button class="btn btn-danger btn-delete-libro" data-id-libro="{{_id}}"
+                                        data-id-autor="{{../_id}}">Eliminar libro</button>
                                 </div>
                             </div>
                             {{/each}}
+                            <button class="btn btn-danger btn-delete-autor" data-id-autor="{{_id}}">Eliminar
+                                Autor</button>
+
                         </div>
                     </div>
                 </div>
