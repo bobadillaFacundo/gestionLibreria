@@ -11,38 +11,6 @@ import usuariosModel from '../models/usuarios.js'
 const router = express.Router()
 router.use(express.static(__dirname + "/public"))
 
-/*router.get('/principal:id', authMiddleware, async (req, res) => {
-    try {
-        const id = String(req.params.id)
-        const usuario = await usuariosModel.findOne({ email: id })
-        const result = await librosModel.find()
-            .populate({ path: 'autor' })
-            .populate({ path: 'categorias' })
-
-            if  (!result) {
-                return ERROR(res, `Error del servidor: ID no Existe`)
-            }
-            console.log(usuario);
-        if(!usuario){
-            return ERROR(res, `Error del servidor: ID no Existe`)
-        }    
-        if (usuario.tipo === 'comun') {
-            res.render('librosUsuario', {
-                style: 'index.css',
-                libros: result
-            })
-        } else {
-            res.render('libros', {
-                style: 'index.css',
-                libros: result
-            })
-        }
-    
-    } catch (error) {
-        console.error("Error al obtener los libros:", error)
-        res.status(500).send("Error del servidor")
-    }
-})*/
 
 router.get('/principalGestion', authMiddleware, async (req, res) => {
     try {

@@ -14,6 +14,8 @@ import cookieParser from "cookie-parser"
 import carrito from "./routers/carritos.router.js"
 import cors from "cors"
 import compras from "./routers/compras.router.js"
+import mercadopago from "mercadopago"
+import mercado from "./routers/mercadoPago.router.js"
 
 
 // Obtener el __dirname en módulos ES6
@@ -32,6 +34,8 @@ app.use(
 
 // Configura Express para servir archivos estáticos desde la carpeta "public"
 app.use(express.static(path.join(__dirname, 'public'))) 
+// Configura Mercado Pago con tu Access Token
+const mp = new mercadopago.MercadoPagoConfig({ accessToken: process.env.ACCESS_TOKEN })
 
 // Middleware para analizar el cuerpo de la solicitud
 app.use(cookieParser())  // Permite leer cookies
@@ -63,6 +67,7 @@ app.use('/api/usuarios', usuarios)
 app.use('/api/login', login) 
 app.use('/api/carritos', carrito)
 app.use('/api/compras', compras)
+app.use('/api/mercadopago', mercado)
 
 
 // Conectar a MongoDB

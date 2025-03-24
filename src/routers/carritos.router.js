@@ -5,7 +5,7 @@ import carritosModel from '../models/carritos.js'
 import __dirname from "../utils/utils.js"
 import usuariosModel from '../models/usuarios.js'
 import mongoose from "mongoose"
-
+import librosModel from '../models/libros.js'
 
 const router = express.Router()
 router.use(express.static(__dirname + "/public"))
@@ -170,6 +170,64 @@ router.post("/agregarCarrito", authMiddleware, async (req, res) => {
         console.error("Error al procesar el registro:", error)
         return res.status(500).json({ error: "Error en el registro" })
     }
+})
+router.post('/buscarMontoCarrito', authMiddleware, async (req, res) => {
+    try {
+        const { email } = req.body
+        let carritoMonto = 0
+        // Busca el carrito correspondiente al email
+        const result = await carritosModel.find().populate({ path: 'libros' }).populate({ path: 'usuario' })
+        result.forEach(carrito => {
+            if (carrito.usuario.email === email) {
+                carrito.libros.forEach(libro => {
+                    carritoMonto += libro.precio
+                })
+            }
+        })
+        // Verifica si se encontró el carrito
+        if (!result) {
+            return res.status(404).json({ mensaje: 'Carrito no encontrado' })
+        }
+
+        // Devuelve el monto en la respuesta
+        res.json({ carritoMonto })
+    } catch (error) {
+        console.error('Error al calcular el monto:', error);
+        res.status(500).json({ mensaje: `Error del servidor: ${error.message}` })
+    }
+})
+router.put('/eliminarLibro', authMiddleware, async (req, res) => {
+    try {
+        const { id, email } = req.body
+        
+        // Busca el carrito correspondiente al email
+        if(!mongoose.Types.ObjectId.isValid(id)){
+            return res.status(400).json({ error: "ID de libro no válido" })
+        }
+
+        const idObj = new mongoose.Types.ObjectId(id)
+        const user = await usuariosModel.findOne({ email: email })
+        const carrito = await carritosModel.findOne({ usuario: user._id })
+        
+
+        for await (const libroEncontado of carrito.libros) {
+            if (libroEncontado._id.equals(idObj)) {
+                await carritosModel.updateOne({ _id: carrito._id }, { $pull: { libros: idObj } })
+                break
+            }  
+        }
+        
+
+        const libro = await librosModel.findById(idObj)
+        libro.cantidad += 1
+        libro.save()
+        await carrito.save()
+
+        res.json({ message: 'Libro eliminado del carrito' })
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ mensaje: `Error del servidor: ${error.message}` })
+    }  
 })
 
 

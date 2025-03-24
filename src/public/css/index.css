@@ -377,3 +377,8 @@ header {
 .btn.btn-secondary.m-3:hover {
     opacity: 0.8;  /* Efecto de opacidad en hover */
 }
+
+.btn-delete-libro-carrito {
+    font-size: 14px;
+    padding: 6px 12px;
+}
