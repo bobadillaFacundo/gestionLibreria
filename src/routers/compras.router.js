@@ -7,7 +7,7 @@ import librosMyModel from "../models/libros.js"
 import mongoose from "mongoose"
 import comprasModel from "../models/compra.js"
 import { ERROR } from "../utils/utils.js"
-
+import usuariosModel from "../models/usuarios.js"
 
 
 dotenv.config()
@@ -37,7 +37,6 @@ router.post('/registrarCompra',authMiddleware, async (req, res) => {
     try {
       
         const carritoId = req.body.idCarrito
-        console.log(carritoId)
         
         if (!carritoId || typeof carritoId !== 'string' || !mongoose.Types.ObjectId.isValid(carritoId)) {
             return res.status(400).json({ error: 'ID de compra inválido' });
@@ -93,4 +92,27 @@ router.post('/registrarCompra',authMiddleware, async (req, res) => {
     }
 })
 
+
+router.get('/usuarioCompras/:email',authMiddleware, async (req, res) => {
+    try {
+        const email = req.params.email
+        const user = await usuariosModel.findOne({ email: email })
+        if (!user) {
+            return ERROR(res, `Usuario no encontrado`)
+        }
+        
+        const result = await comprasModel.find({usuario: user._id}).populate({ path: 'usuario' }).populate({ path: 'libros', populate: { path: 'autor' } })
+        .populate({ path: 'libros', populate: { path: 'categorias' } })
+        if (!result) {
+            return ERROR(res, `Compras no encontradas`)
+        }
+        res.render('comprasUsuario', {
+            style: 'index.css',
+            compras: result
+        })
+    } catch (error) {
+        console.error("Error al obtener las compras:", error) 
+        res.status(500).send("Error del servidor")
+        }
+})
 export default router

@@ -21,6 +21,9 @@ document.querySelector('.buscarLibro').addEventListener('click', async () => {
         alert('Error, ingrese el nombre del libro') 
     }
 })
+document.querySelector('.Indexcompras').addEventListener('click', async () => {
+        window.location.href = `/api/libros/${idInput}` 
+})
 
 
 document.querySelectorAll('.btn-delete').forEach(button => {
