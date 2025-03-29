@@ -1,90 +1,28 @@
 import express from "express"
-import { obtenerTodosLosDocumentos, obtenerDocumento, deleteDocumento, ERROR } from "../utils/utils.js"
-import categoriasModel from '../models/categorias.js'
-import __dirname from "../utils/utils.js"
 import authMiddleware from '../middlewares/authMiddleware.js'
-
+import {
+    obtenerTodasLasCategorias,
+    crearCategoriaVista,
+    obtenerCategorias,
+    obtenerCategoriaPorId,
+    crearCategoria,
+    eliminarCategoria
+} from '../controllers/controllerCategorias.js'
+import __dirname from "../utils/utils.js"
 const router = express.Router()
+
 router.use(express.static(__dirname + "/public"))
 
+router.get('/principal', authMiddleware, obtenerTodasLasCategorias)
 
-router.get('/principal', authMiddleware,async (req, res) => {
-    
-    try {
-        const result = await categoriasModel.find().populate({ path: 'libros' })
+router.get("/crud", authMiddleware, crearCategoriaVista)
 
-    res.render('categorias', {
-            style: 'index.css',
-            categorias: result
-        })
-    } catch (error) {
-        ERROR(res, `Error del servidor: ${error}`)}
-    
-})
+router.get('/', authMiddleware, obtenerCategorias)
 
-router.get("/crud", authMiddleware,async (req, res) => {
-    return res.render('createCatgeoria', {
-        style: 'index.css',
-    })
-})
+router.get("/:cid", authMiddleware, obtenerCategoriaPorId)
 
-router.get('/', authMiddleware,async (req, res) => {
+router.post("/", authMiddleware, crearCategoria)
 
-    try {
-        const result = await categoriasModel.find().populate({ path: 'libros' })
-        res.json(result)
-    } catch (error) {
-        ERROR(res, `Error del servidor: ${error}`)}
-})
-
-
-router.get("/:cid",authMiddleware, async (req, res) => {
-    try {
-        const result = await categoriasModel.find({ _id: req.params.cid }).populate({ path: 'libros' })
-
-        if (!result) {
-            return ERROR(res, `Error del servidor: ID no Existe`)
-        }
-        
-        return res.render('categoria', {
-            style: 'index.css',
-            autor: result
-        })
-
-    } catch (error) {
-        ERROR(res, `Error del servidor: ${error}`)
-    }
-})
-
-router.post("/", authMiddleware,(async (req, res) => {
-    const categoria = req.body
-    if (!categoria.nombre ) {
-        return ERROR(res, `Campos Vacios`)
-    }
-    const nuevocategoria = new categoriasModel({
-        nombre: categoria.nombre,
-        libros: []
-    })
-    try {
-        
-        const guardarcategoria = await nuevocategoria.save()
-        res.json( guardarcategoria)
-    } catch (error) {
-        console.error(`Error al insertar documento, ${error}`)
-        ERROR(res, `Error del servidor: ${error}`)
-    }
-}))
-
-router.delete("/:cid",authMiddleware, async (req, res) => {
-    await deleteDocumento(req.params.cid, categoriasModel).then(result => {
-        if (!result || result.deletedCount === 0) {
-            return ERROR(res, `Error del servidor: ID no Existe`)
-        }
-        return res.json('Se elimino el categoria')
-    }).catch(error => {
-        ERROR(res, `Error del servidor: ${error}`)
-    })
-})
-
+router.delete("/:cid", authMiddleware, eliminarCategoria)
 
 export default router
