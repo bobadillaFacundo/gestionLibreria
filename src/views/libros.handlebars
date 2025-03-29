@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra de Libros</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
     <link type="text/css" rel="stylesheet" href="/css/index.css">
 </head>
-
-<body class="container mt-4">
+<body class="container mt-5">
 
     <!-- Contenedor principal -->
     <div class="main-container">
@@ -18,27 +18,26 @@
             <form id="IDC" class="d-flex flex-column align-items-center">
                 <label for="IDL" class="form-label">Nombre del Libro:</label>
                 <input type="text" id="IDLFINALUSUARIO" name="IDL" class="form-control w-50" placeholder="Nombre del libro">
-                <button type="button" class="btn btn-primary mt-2 buscarLibroUsuario">Buscar</button>
+                <button type="button" class="btn btn-primary mt-3 buscarLibroUsuario"><i class="fas fa-search"></i> Buscar</button>
             </form>
         </div>
 
-        <div class="d-flex justify-content-center gap-2 mb-4">
-            <button type="button" class="btn btn-primary btn-autor">Autor</button>
-            <button type="button" class="btn btn-primary perfil">Perfil</button>
-            <button type="button" class="btn btn-primary carrito">Carrito</button>
-            <button type="button" class="btn btn-outline-danger sesion">Cerrar sesión</button>
+        <div class="d-flex justify-content-center gap-3 mb-4">
+            <button type="button" class="btn btn-secondary btn-custom btn-autor"><i class="fas fa-user"></i> Autor</button>
+            <button type="button" class="btn btn-info btn-custom perfil"><i class="fas fa-user-circle"></i> Perfil</button>
+            <button type="button" class="btn btn-success btn-custom carrito"><i class="fas fa-shopping-cart"></i> Carrito</button>
+            <button type="button" class="btn btn-outline-danger btn-custom sesion"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</button>
         </div>
 
         <!-- Sección de Libros -->
         <section class="libros-section">
             {{#each libros}}
-            <div class="card p-3 mb-3 shadow-sm">
-                <h5 class="card-title">Libro</h5>
+            <div class="card p-4 mb-3 shadow-sm">
+                <h5 class="card-title"><i class="fas fa-book"></i> {{titulo}}</h5>
                 <p><strong>ID:</strong> {{_id}}</p>
                 <p><strong>Autor:</strong> {{autor.nombre}}</p>
-                <p><strong>Título:</strong> {{titulo}}</p>
                 <p><strong>Descripción:</strong> {{descripcion}}</p>
-                <p><strong>Precio:</strong> {{precio}}</p>
+                <p><strong>Precio:</strong> ${{precio}}</p>
                 <p><strong>Cantidad:</strong> {{cantidad}}</p>
                 <label for="text" class="form-label">Lista de categorías:</label>
                 <ul class="list-group">
@@ -46,14 +45,14 @@
                     <li class="list-group-item">{{nombre}}</li>
                     {{/each}}
                 </ul>
-                <button type="button" class="btn btn-success mt-3 btn-comprarLibro" data-id-Libro="{{_id}}">Agregar a carrito</button>
+                <button type="button" class="btn btn-success mt-3 btn-comprarLibro" data-id-Libro="{{_id}}"><i class="fas fa-cart-plus"></i> Agregar a carrito</button>
             </div>
             {{/each}}
         </section>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/js/all.min.js"></script>
     <script src="/js/libroindex3.js"></script>
 </body>
-
 </html>
