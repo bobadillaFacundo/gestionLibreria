@@ -1,37 +1,75 @@
-Tecnologias:
-Node.js
-express
-Handlebars
-MongoDB
-boostrap
+# 📚 Plataforma de Venta de Libros
 
-Es necesario conectarce a la bdd mongo y crear el usuario admin. En la carpeta model esta el template, en tipo poner "admin". Cuando te registras desde la pagina te crea como un usuario comun.
+Este proyecto es una plataforma de compra de libros desarrollada con Node.js y MongoDB. La aplicación permite a los usuarios registrarse, explorar libros y realizar compras a través de la integración con Mercado Pago.
 
-Construcción de la imagen Docker:
+## 🚀 Tecnologías Utilizadas
 
-Desde la línea de comandos, en el directorio donde se encuentra tu Docker-Compose, ejecuta el siguiente comando para construir la imagen Docker-compose:
+### Backend
+- **Node.js** con **Express**
+- **Mongoose** para la gestión de MongoDB
+- **JSON Web Token (JWT)** para autenticación
+- **CORS** para manejo de seguridad entre dominios
 
-      docker-compose build
-Ejecución del contenedor:
+### Base de Datos
+- **MongoDB** (Se requiere una cuenta en MongoDB Atlas o una instancia local)
 
-Una vez que la imagen se haya construido correctamente, puedes ejecutar un contenedor con el siguiente comando
+### Frontend
+- **Handlebars** para la renderización de vistas
+- **Bootstrap** para el diseño responsivo
 
-      docker-compose up
-Despues habrir en el puerto http://localhost:8000/api/login/principal
+## 🔧 Configuración del Entorno
+Para ejecutar el proyecto correctamente, es necesario configurar las variables de entorno en un archivo `.env`. Asegúrate de incluir lo siguiente:
 
-Los datos se persisten en la bdd MongoDB
+```env
+PORT=8000
+MONGO_URI=<tu_url_de_mongodb>
+JWT_SECRET=<tu_clave_secreta>
+FRONTEND_URL=<url_del_frontend>
 
-Otra forma:
+# Credenciales de Mercado Pago
+PUBLIC_KEY=<tu_public_key>
+ACCESS_TOKEN=<tu_access_token>
+SUCCESS_URL=<tu_url_exito>
+FAILURE_URL=<tu_url_fallo>
+PENDING_URL=<tu_url_pendiente>
+```
 
-npm install
+## 🏗 Instalación y Ejecución
 
-node start
+### Opción 1: Usando Docker
+1. Construye la imagen Docker:
+   ```sh
+   docker-compose build
+   ```
+2. Ejecuta el contenedor:
+   ```sh
+   docker-compose up
+   ```
+3. Accede a la aplicación en: [http://localhost:8000/api/login/principal](http://localhost:8000/api/login/principal)
 
-Es necesario subir las credenciales en el .env
+### Opción 2: Instalación Manual
+1. Instala las dependencias:
+   ```sh
+   npm install
+   ```
+2. Inicia el servidor:
+   ```sh
+   npm start
+   ```
 
+## 🛠 Configuración de la Base de Datos
+Es necesario conectar la base de datos y crear un usuario administrador manualmente. En la carpeta `models`, encontrarás la plantilla de usuario. Asegúrate de que el campo `tipo` sea `admin`. Los usuarios registrados desde la página serán creados como usuarios comunes.
 
-Imagenes del prototipo
+## 📸 Capturas de Pantalla
+![Interfaz 1](https://github.com/user-attachments/assets/e3940803-ee7e-4b2d-af2e-a874268de0d8)
+![Interfaz 2](https://github.com/user-attachments/assets/41633d6c-62f4-4806-8efc-51a25fdc81b5)
+![Interfaz 3](https://github.com/user-attachments/assets/3ff5f126-b0db-4659-97d3-7e5332a3ec3d)
 
-![Captura de pantalla 2025-03-29 194547](https://github.com/user-attachments/assets/e3940803-ee7e-4b2d-af2e-a874268de0d8)
-![Captura de pantalla 2025-03-29 200611](https://github.com/user-attachments/assets/41633d6c-62f4-4806-8efc-51a25fdc81b5)
-![Captura de pantalla 2025-03-29 200631](https://github.com/user-attachments/assets/3ff5f126-b0db-4659-97d3-7e5332a3ec3d)
+## 📌 Notas Adicionales
+- Se recomienda utilizar **Node.js v18+** para mejor compatibilidad.
+- La persistencia de datos se realiza en MongoDB.
+- Para pruebas locales, puedes utilizar herramientas como **Postman** o **Insomnia** para consumir la API.
+
+---
+### 📬 Contacto
+Si tienes preguntas o sugerencias, no dudes en contactarme (bobadillaf97@gmail.com). 🚀
