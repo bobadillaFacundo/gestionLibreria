@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/c3df6ae3-5310-48ac-8d88-520c4c4dbfe5)
+
 # 📚 Plataforma de Venta de Libros
 
 Este proyecto es una plataforma de compra de libros desarrollada con Node.js y MongoDB. La aplicación permite a los usuarios registrarse, explorar libros y realizar compras a través de la integración con Mercado Pago.
